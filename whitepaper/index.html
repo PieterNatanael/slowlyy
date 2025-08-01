@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Slowlyy Whitepaper</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem;
+      background: #f9f9f9;
+      color: #222;
+    }
+    h1, h2 {
+      color: #111;
+    }
+    h1 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.3rem;
+    }
+    code, pre {
+      background: #eee;
+      padding: 0.5rem;
+      border-radius: 5px;
+      display: block;
+      overflow-x: auto;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Slowlyy: A 30-Day Delay Crypto Wallet</h1>
+
+  <section>
+    <h2>Abstract</h2>
+    <p>
+      Slowlyy is a novel crypto wallet designed to mitigate the risks of wallet-draining attacks by introducing a mandatory 30-day transaction delay. By combining a dual-source date verification system with client-side enforcement and cryptographic validation, Slowlyy provides users a critical time window to detect unauthorized access before any crypto leaves their wallet.
+    </p>
+  </section>
+
+  <section>
+    <h2>Problem Statement</h2>
+    <p>
+      Traditional crypto wallets execute transactions instantly. If a malicious actor gains access to the private key or device, they can immediately drain all assets. The speed of blockchain settlement becomes a security liability in such cases, as there's no way to intercept or reverse unauthorized transactions.
+    </p>
+  </section>
+
+  <section>
+    <h2>Solution: 30-Day Time Lock</h2>
+    <p>
+      Slowlyy introduces a fixed 30-day delay on all transactions. This time buffer gives users the opportunity to:
+    </p>
+    <ul>
+      <li>Detect unauthorized activity</li>
+      <li>Revoke access</li>
+      <li>Move funds to secure locations</li>
+    </ul>
+    <p>
+      All transaction requests are stored but delayed, only executable after 30 full days have passed.
+    </p>
+  </section>
+
+  <section>
+    <h2>Security Architecture</h2>
+    <h3>Dual Time Verification</h3>
+    <p>To prevent clock tampering or spoofed timestamps, Slowlyy uses a dual-source date confirmation system:</p>
+    <ul>
+      <li><strong>WorldTimeAPI</strong>: Public, independent API providing UTC time. Used to prevent local clock spoofing.</li>
+      <li><strong>Custom /date API with HMAC Signature</strong>:<br/>
+        Self-hosted endpoint (e.g., <code>https://api.slowlyy.xyz/date</code>) returns JSON:
+        <pre><code>{
+  "date": "2025-08-01",
+  "signature": "..." // HMAC-SHA256 of date
+}</code></pre>
+        Signature validated by app using shared secret. Ensures authenticity and integrity of the date.
+      </li>
+    </ul>
+    <p>Both APIs must agree on the date for any transaction check to pass.</p>
+
+    <h3>Local Time Ignored</h3>
+    <p>Slowlyy does not trust the device’s internal clock. All date validations happen against the above external sources. This removes the risk of attackers spoofing local time to prematurely release funds.</p>
+
+    <h3>Tamper-Resistant Logic</h3>
+    <ul>
+      <li>Transactions are stored locally and/or off-chain until 30 days pass.</li>
+      <li>Unlock logic is hard-coded to reject any date mismatch or invalid signature.</li>
+      <li>If both APIs are unreachable, app defaults to blocking the transaction.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Developer Integration Flow</h2>
+    <ol>
+      <li>On transaction initiation, the app stores the <code>timestamp</code> and <code>unlock_date = timestamp + 30 days</code>.</li>
+      <li>On app open or send attempt:
+        <ul>
+          <li>Request UTC date from WorldTimeAPI</li>
+          <li>Request <code>/date</code> from Slowlyy API</li>
+          <li>Compare both dates</li>
+          <li>Verify HMAC signature</li>
+        </ul>
+      </li>
+      <li>If both sources match, signature is valid, and <code>current date >= unlock_date</code>, then transaction can be broadcast to the blockchain.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Security Assumptions</h2>
+    <ul>
+      <li>The shared HMAC key is known only to the app and server.</li>
+      <li>HTTPS is used to prevent MITM attacks.</li>
+      <li>Neither date source can independently spoof the time without detection.</li>
+      <li>User has visibility and can cancel transactions within the 30-day window.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Benefits</h2>
+    <ul>
+        <li>Works on desktop and mobile</li>
+      <li>Drastically reduces risk of fast-draining malware</li>
+      <li>No third-party custody: users still own their private keys</li>
+      <li>Tamper-resistant validation via dual sources and cryptographic signatures</li>
+      <li>User-friendly recovery buffer: aligns with real-world financial risk controls</li>
+    </ul>
+  </section>
+
+
+
+  <section>
+    <h2>Conclusion</h2>
+    <p>
+      Slowlyy is built on a simple principle: slowing down crypto can actually make it safer. With a minimal but powerful dual-verification time lock, users gain crucial time to act in emergencies. This wallet architecture redefines digital self-custody security by prioritizing control and recovery over speed.
+    </p>
+  </section>
+
+  <section>
+    <h2>Appendix</h2>
+    <h3>WorldTimeAPI</h3>
+    <p>Sample HMAC API response:</p>
+    <pre><code>{
+  "date": "2025-08-01",
+  "signature": "f0e2b7234f1f..."
+}</code></pre>
+    <p>Signature generated using:</p>
+    <code>HMAC-SHA256(date + secret)</code>
+  </section>
+</body>
+</html>
