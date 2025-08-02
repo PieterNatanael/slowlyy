@@ -44,6 +44,14 @@
       text-decoration: none;
     }
 
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
     form {
       margin-top: 30px;
       display: flex;
@@ -80,12 +88,17 @@
       font-size: 0.9em;
       color: #888;
     }
+
+    .cta {
+      margin: 30px 0;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="logo.png" alt="Slowlyy Logo"  class="logo" />
+    <img src="logo.png" alt="Slowlyy Logo" class="logo" />
     <h1>Crypto wallets move fast. Hackers love that.</h1>
     <p><strong>Meet Slowlyy — the wallet that gives you 30 days to stop fraud.</strong></p>
   </header>
@@ -93,10 +106,9 @@
   <section>
     <h2>The Problem</h2>
     <p>
- Most crypto wallets prioritize speed—executing transactions instantly once signed. But in today’s environment, attackers often gain remote access to devices rather than stealing seed phrases. Once inside, they can trigger transactions and drain funds in seconds, often before users even realize their wallet is compromised. Speed, in this case, becomes a vulnerability—not a feature.
-
+      Most crypto wallets prioritize speed—executing transactions instantly once signed. But in today’s environment, attackers often gain remote access to devices rather than stealing seed phrases. Once inside, they can trigger transactions and drain funds in seconds, often before users even realize their wallet is compromised. Speed, in this case, becomes a vulnerability—not a feature.
     </p>
-
+  </section>
 
   <section>
     <h2>Solution: 30-Day Time Lock</h2>
@@ -113,36 +125,89 @@
     </p>
   </section>
 
-    <section>
+  <section>
     <h2>Benefits</h2>
     <ul>
-        <li> Available on desktop and mobile for secure access anytime, anywhere</li>
+      <li>Available on desktop and mobile for secure access anytime, anywhere</li>
       <li>Drastically reduces risk of fast-draining malware</li>
       <li>No third-party custody: users still own their private keys</li>
       <li>Tamper-resistant validation via dual sources and cryptographic signatures</li>
       <li>User-friendly recovery buffer: aligns with real-world financial risk controls</li>
     </ul>
   </section>
-
-
-
-      <div class="cta">
-    <a href="/whitepaper">📄 Read Our White Paper</a>
+  
+<section>
+  <div class="cta" style="text-align: left;">
+    <a href="/whitepaper" style="display: inline-block; margin: 10px 0;">📄 Read Our White Paper</a><br>
+    <a href="#roadmap" style="display: inline-block; margin: 10px 0;">📍 Read Our Roadmap</a>
   </div>
+</section>
 
+
+  <section id="roadmap">
+    <h2>Slowlyy Roadmap</h2>
+
+    <h3>Current Stage – August 2025</h3>
+    <ul>
+      <li>Core protocol complete: 30-day time lock logic fully implemented</li>
+      <li>Dual time verification (WorldTimeAPI + HMAC-protected custom API)</li>
+      <li>Local time bypassed and hardened against clock tampering</li>
+      <li>UI/UX finalized for desktop and mobile apps</li>
+      <li>Internal security testing and QA underway</li>
+    </ul>
+
+    <h3>September 2025 — Testnet Launch (Polygon Mumbai)</h3>
+    <p>
+      Allow users to test the full flow: create wallet, initiate transaction, and experience an enforced <strong>3-day delay on testnet (instead of 30 days)</strong> to simulate the Slowlyy time-lock mechanism without the long wait.
+    </p>
+    <ul>
+      <li>Launch on Polygon Mumbai testnet (desktop & mobile)</li>
+      <li>Validate dual-source date sync, signature checking, and delay logic</li>
+      <li>Collect real-world UX feedback and bug reports</li>
+      <li>Refine developer documentation and app stability</li>
+    </ul>
+
+    <h3>October 2025 — Security Hardening & Final Tweaks</h3>
+    <ul>
+      <li>Incorporate testnet feedback</li>
+      <li>Expand testing with auditors or white-hat hackers</li>
+      <li>Polish onboarding and cancellation flows</li>
+      <li>Prepare for production deployment</li>
+    </ul>
+
+    <h3>November 2025 — Mainnet Launch (Polygon Mainnet)</h3>
+    <ul>
+      <li>Public release of Slowlyy on Polygon Mainnet</li>
+      <li>Begin onboarding and public usage with 30-day enforced delay</li>
+      <li>Monitor uptime, user activity, and attempted tampering</li>
+      <li>Build partnerships and raise awareness in the crypto space</li>
+    </ul>
+
+    <h3>2026 and Beyond — Strategic Expansion</h3>
+    <ul>
+      <li>Support for other chains, including Ethereum, Bitcoin, Base, Arbitrum, and Optimism </li>
+      <li>Slowlyy Pro: for multi-sig treasuries, and orgs</li>
+      <li>Cold wallet hardware integration</li>
+      <li>Open SDK for third-party developers</li>
+      <li>Apply for relevant grants (Polygon, Ethereum Foundation, etc.)</li>
+    </ul>
+  </section>
+
+  <section>
     <h2>Built by Humans Who Care</h2>
     <p>This project is created by:</p>
     <ul>
       <li><a href="https://www.linkedin.com/in/pieternatanael" target="_blank">Pieter Natanael</a></li>
       <li><a href="https://www.linkedin.com/in/krishna-rp/" target="_blank">Krishna Patidar</a></li>
     </ul>
+  </section>
 
+  <section>
     <h2>Stay Updated</h2>
     <form action="https://formspree.io/f/mdkddzvq" method="POST">
       <input type="email" name="email" placeholder="Enter your email" required />
       <button type="submit">Join the Waitlist</button>
     </form>
-
     <p>Get early access. Stay informed. Be safe.</p>
   </section>
 
