@@ -58,6 +58,18 @@
       flex-direction: column;
     }
 
+    textarea {
+  background: #222;
+  color: #eee;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+
     input, button {
       padding: 10px;
       margin-bottom: 10px;
@@ -195,14 +207,15 @@
     </ul>
   </section>
 
-  <section>
-    <h2>Stay Updated</h2>
-    <form action="https://formspree.io/f/mdkddzvq" method="POST">
-      <input type="email" name="email" placeholder="Enter your email" required />
-      <button type="submit">Join the Waitlist</button>
-    </form>
-    <p>Get early access. Stay informed. Be safe.</p>
-  </section>
+<section>
+  <h2>Stay Updated</h2>
+  <form action="https://formspree.io/f/mdkddzvq" method="POST">
+    <input type="email" name="email" placeholder="Enter your email" required />
+    <textarea name="feedback" placeholder="Your feedback (optional)" rows="4"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <p>Get early access. Stay informed. Be safe.</p>
+</section>
 
   <footer>
     &copy; 2025 Slowlyy. All rights reserved.
