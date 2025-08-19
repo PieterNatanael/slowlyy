@@ -5,20 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Slowlyy — Slow Crypto Wallet</title>
   <style>
+    :root {
+      --bg: #111;
+      --fg: #eee;
+      --muted: #888;
+      --accent: #ffd700;
+      --link: #66ccff;
+    }
 
-    
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #111;
-      color: #eee;
+      background-color: var(--bg);
+      color: var(--fg);
       line-height: 1.6;
       padding: 0 20px;
     }
 
     header {
       text-align: center;
-      padding: 40px 20px 20px;
+      padding: 40px 20px 10px;
     }
 
     header img {
@@ -29,6 +37,7 @@
     h1 {
       font-size: 2em;
       color: #fff;
+      margin: 0 0 6px 0;
     }
 
     section {
@@ -37,22 +46,14 @@
     }
 
     h2 {
-      color: #ffd700;
+      color: var(--accent);
       margin-top: 40px;
     }
 
-    a {
-      color: #66ccff;
-      text-decoration: none;
-    }
+    a { color: var(--link); text-decoration: none; }
 
-    ul {
-      padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 8px; }
 
     form {
       margin-top: 30px;
@@ -62,7 +63,7 @@
 
     textarea {
       background: #222;
-      color: #eee;
+      color: var(--fg);
       padding: 10px;
       border: none;
       border-radius: 5px;
@@ -79,80 +80,99 @@
       font-size: 1em;
     }
 
-    input[type="email"] {
-      background: #222;
-      color: #eee;
-    }
+    input[type="email"] { background: #222; color: var(--fg); }
 
     button {
-      background: #ffd700;
+      background: var(--accent);
       color: #000;
       cursor: pointer;
       transition: background 0.3s ease;
     }
 
-    button:hover {
-      background: #ffcc00;
-    }
+    button:hover { background: #ffcc00; }
 
     footer {
       text-align: center;
       margin: 50px 0;
       font-size: 0.9em;
-      color: #888;
+      color: var(--muted);
     }
 
-    .cta {
-      margin: 20px 0;
-      text-align: center;
-    }
+    .cta { margin: 20px 0; text-align: center; }
 
+    /* App Store button (animated + gradient) */
     .appstore-button {
       display: inline-block;
-      background: #66ccff;
+      background: linear-gradient(90deg, #66ccff, #3399ff);
       color: #000;
-      padding: 12px 24px;
-      border-radius: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
       font-weight: bold;
       text-decoration: none;
       margin-top: 15px;
-      transition: background 0.3s ease;
+      transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      will-change: transform;
     }
-
     .appstore-button:hover {
-      background: #5bb3e0;
+      background: linear-gradient(90deg, #3399ff, #66ccff);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     }
+    .appstore-button:active { transform: translateY(1px); }
 
+    /* Announcement + banner */
     .announcement {
       margin-top: 10px;
-      color: #ffd700;
+      color: var(--accent);
       font-weight: bold;
       font-size: 1.1em;
     }
 
+    .banner {
+      max-width: 900px;
+      margin: 16px auto 0;
+      background: linear-gradient(90deg, rgba(255,215,0,0.08), rgba(102,204,255,0.08));
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #ddd;
+      padding: 12px 16px;
+      border-radius: 12px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .banner strong { color: #fff; }
 
-.appstore-button {
-  display: inline-block;
-  background: linear-gradient(90deg, #66ccff, #3399ff);
-  color: #000;
-  padding: 14px 28px;
-  border-radius: 12px;
-  font-weight: bold;
-  text-decoration: none;
-  margin-top: 15px;
-  transition: transform 0.2s ease, background 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      font-size: 0.9em;
+      white-space: nowrap;
+    }
 
-.appstore-button:hover {
-  background: linear-gradient(90deg, #3399ff, #66ccff);
-  transform: translateY(-3px);
-}
-
-.appstore-button:active {
-  transform: translateY(1px);
-}
-
+    /* Info cards for Testnet/Mainnet */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 720px) {
+      .cards { grid-template-columns: 1fr 1fr; }
+    }
+    .card {
+      background: #151515;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .card h3 { margin-top: 0; color: var(--accent); }
+    .card ul { margin: 10px 0 0 18px; }
   </style>
 </head>
 <body>
@@ -161,11 +181,19 @@
     <img src="logo.png?v=2" alt="Slowlyy Logo" class="logo" />
     <h1>Self-custody crypto wallets on devices move fast. Hackers love that..</h1>
     <p><strong>Meet Slowlyy — a slower (safer) crypto wallet</strong></p>
-    <p class="announcement">🎉 Good news! Slowlyy is now available on the Apple App Store!</p>
+    <p class="announcement">🎉 Good news! Slowlyy is now available on the App Store!</p>
     <div class="cta">
-      <a href="https://apps.apple.com/in/app/slowlyy-crypto-wallet/id6751106285" target="_blank" class="appstore-button">
-        📲 Try Slowlyy on the Apple App Store
+      <a href="https://apps.apple.com/in/app/slowlyy-crypto-wallet/id6751106285" target="_blank" class="appstore-button" rel="noopener">
+        📲 Try Slowlyy on the App Store
       </a>
+    </div>
+
+    <!-- Compact banner directly under header -->
+    <div class="banner" role="status" aria-live="polite">
+      <span class="badge">🚀 Testnet Live</span>
+      <span>Try Slowlyy safely with a <strong>30‑minute delay</strong> on every transaction.</span>
+      <span class="badge">🔜 Mainnet</span>
+      <span>Coming with configurable <strong>3–30 day delay</strong> + support for Bitcoin, Ethereum, Cardano.</span>
     </div>
   </header>
 
@@ -179,8 +207,30 @@
   <section>
     <h2>Solution: Slowlyy</h2>
     <p>
-      A safer self-custody wallet for mobile phones, laptops, and desktop computers. Slowlyy adds a 3–30 day delay to every transaction, giving time to spot problems and stop theft—without giving up control. Just added time for safety and peace of mind.
+      A safer self-custody wallet for mobile phones, laptops, and desktop computers. Slowlyy adds a configurable delay to every transaction, giving time to spot problems and stop theft—without giving up control. Just added time for safety and peace of mind.
     </p>
+  </section>
+
+  <section>
+    <h2>How It Works: Testnet vs Mainnet</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>🧪 Testnet (v1) — Live Now</h3>
+        <ul>
+          <li><strong>Fixed 30‑minute delay</strong> on each transaction for a safe concept demo.</li>
+          <li>Use testnet funds — <em>no real value at risk</em>.</li>
+          <li>Great for exploring the experience and sharing feedback.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🛡️ Mainnet — In Development</h3>
+        <ul>
+          <li><strong>User‑configurable 3–30 day delay</strong> for stronger protection.</li>
+          <li>Planned network support: <strong>Bitcoin, Ethereum, Cardano</strong> (more to come).</li>
+          <li>Ongoing security hardening and UX refinements.</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section>
@@ -205,8 +255,8 @@
     <h2>Built by Humans Who Care</h2>
     <p>This project is created by:</p>
     <ul>
-      <li><a href="https://www.linkedin.com/in/pieternatanael" target="_blank">Pieter Natanael</a></li>
-      <li><a href="https://www.linkedin.com/in/krishna-rp/" target="_blank">Krishna Patidar</a></li>
+      <li><a href="https://www.linkedin.com/in/pieternatanael" target="_blank" rel="noopener">Pieter Natanael</a></li>
+      <li><a href="https://www.linkedin.com/in/krishna-rp/" target="_blank" rel="noopener">Krishna Patidar</a></li>
     </ul>
   </section>
 
@@ -219,8 +269,8 @@
     </form>
     <p>Get early access. Stay informed. Be safe.</p>
     <div class="cta">
-      <a href="https://apps.apple.com/in/app/slowlyy-crypto-wallet/id6751106285" target="_blank" class="appstore-button">
-        📲 Try Slowlyy on the Apple App Store
+      <a href="https://apps.apple.com/in/app/slowlyy-crypto-wallet/id6751106285" target="_blank" class="appstore-button" rel="noopener">
+        📲 Try Slowlyy on the App Store
       </a>
     </div>
   </section>
