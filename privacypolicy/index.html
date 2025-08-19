@@ -26,17 +26,25 @@
 
     h1 {
       font-size: 2em;
-      color: #ffd700;
+      color: #fff;
     }
 
     section {
       max-width: 800px;
-      margin: 40px auto;
+      margin: 30px auto;
     }
 
     h2 {
       color: #ffd700;
-      margin-top: 40px;
+      margin-top: 30px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
     }
 
     a {
@@ -44,84 +52,125 @@
       text-decoration: none;
     }
 
-    footer {
-      text-align: center;
-      margin: 50px 0;
-      font-size: 0.9em;
-      color: #888;
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 15px;
+      background: #222;
+      color: #66ccff;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: #333;
+    }
+
+    .container {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
   </style>
 </head>
 <body>
-
   <header>
-    <img src="logo.png?v=2" alt="Slowlyy Logo" />
-    <h1>Privacy Policy</h1>
-    <p>Effective Date: 18 August 2025</p>
+
+    <h1>🛡️ Slowlyy Wallet</h1>
+    <p><strong>Privacy Policy</strong></p>
+    <p>Last Updated: August 19, 2025</p>
   </header>
 
   <section>
-    <h2>1. Information We Collect</h2>
-    <p>Slowlyy is a <strong>self-custodial wallet</strong>. This means:</p>
-    <ul>
-      <li>We do not collect, store, or have access to your private keys, seed phrases, wallet balances, or transaction history.</li>
-      <li>All sensitive information is encrypted and stored locally on your device.</li>
-      <li>We do not require you to create an account, and we do not collect personal identifiers (such as name, email, or phone number) unless you provide them for support purposes.</li>
-    </ul>
-  </section>
+    <div class="container">
+      <h2>🎯 Our Commitment to Your Privacy</h2>
+      <p>At Slowlyy, we believe your privacy is fundamental. This Privacy Policy explains how our cryptocurrency wallet application ("Slowlyy Wallet") handles your information. <strong>The short version:</strong> we don't collect, store, or share your personal data.</p>
+      <p><strong>Privacy First:</strong> Slowlyy Wallet is designed with a "privacy-by-design" approach. Your wallet data never leaves your device except for necessary blockchain interactions.</p>
 
-  <section>
-    <h2>2. How We Use Information</h2>
-    <p>If any information is collected (such as optional diagnostic data or support requests), we only use it to:</p>
-    <ul>
-      <li>Provide and improve Slowlyy</li>
-      <li>Respond to user inquiries and support requests</li>
-      <li>Enhance app performance and security</li>
-    </ul>
-    <p>We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
-  </section>
+      <h2>📱 Information We Do NOT Collect</h2>
+      <ul>
+        <li>Your seed phrases or private keys</li>
+        <li>Your wallet addresses or transaction history</li>
+        <li>Personal information (name, email, phone number)</li>
+        <li>Device identifiers or location data</li>
+        <li>Usage analytics or crash reports</li>
+        <li>Biometric data (Face ID/Touch ID stays on your device)</li>
+        <li>Any passwords or authentication credentials</li>
+      </ul>
 
-  <section>
-    <h2>3. Third-Party Services</h2>
-    <p>Slowlyy may use trusted third-party services for analytics and crash reporting. These services may collect non-personal information such as device type, operating system, and app usage patterns. No sensitive wallet data is ever shared.</p>
-  </section>
+      <h2>🔒 How Your Data Is Stored</h2>
+      <ul>
+        <li><strong>iOS Keychain:</strong> Seed phrase and pending transactions stored securely with hardware-level encryption</li>
+        <li><strong>Biometric Protection:</strong> Access requires Face ID, Touch ID, or device passcode</li>
+        <li><strong>No Cloud Backup:</strong> Sensitive data is never backed up to iCloud or other cloud services</li>
+      </ul>
 
-  <section>
-    <h2>4. Security</h2>
-    <p>Your private keys and seed phrases are only stored locally on your device. We strongly encourage you to back up your seed phrase securely offline. Slowlyy cannot recover your wallet if you lose your device or recovery phrase.</p>
-  </section>
+      <h2>🌐 Network Communications</h2>
+      <ul>
+        <li>Polygon Blockchain via Alchemy API (no personal data)</li>
+        <li>Time verification via timeapi.io (no personal data)</li>
+        <li>No tracking or linking to your identity</li>
+      </ul>
 
-  <section>
-    <h2>5. Your Rights</h2>
-    <p>Depending on your location, you may have rights to:</p>
-    <ul>
-      <li>Access information we hold about you (if any)</li>
-      <li>Request deletion of support-related data</li>
-      <li>Withdraw consent to optional data collection</li>
-    </ul>
-    <p>For requests, contact us at: <a href="mailto:pieternatanael@icloud.com">pieternatanael@icloud.com</a></p>
-  </section>
+      <h2>⏰ Delayed Transaction Feature</h2>
+      <ul>
+        <li>Pending transactions stored locally in secure keychain</li>
+        <li>No transaction data sent to servers</li>
+        <li>Time verification ensures security without compromising privacy</li>
+      </ul>
 
-  <section>
-    <h2>6. Children’s Privacy</h2>
-    <p>Slowlyy is not directed at children under the age of 13. We do not knowingly collect personal data from children.</p>
-  </section>
+      <h2>🧪 Testnet Usage</h2>
+      <ul>
+        <li>All transactions use test tokens with no real-world value</li>
+        <li>Testnet data is public on the blockchain but not linked to your identity</li>
+        <li>No financial or personal risk</li>
+      </ul>
 
-  <section>
-    <h2>7. Changes to This Policy</h2>
-    <p>We may update this Privacy Policy from time to time. Updates will be posted in the app and/or on our website with a revised “Effective Date.”</p>
-  </section>
+      <h2>👨‍💻 Third-Party Services</h2>
+      <ul>
+        <li>Alchemy: Blockchain interactions (wallet addresses only)</li>
+        <li>TimeAPI.io: UTC time verification (no user data transmitted)</li>
+        <li>App Store: Standard iOS app distribution</li>
+        <li>Trust WalletCore: Industry-standard algorithms</li>
+      </ul>
 
-  <section>
-    <h2>8. Contact Us</h2>
-    <p>If you have any questions about this Privacy Policy, please contact us at:</p>
-    <p>📧 <a href="mailto:pieternatanael@icloud.com">pieternatanael@icloud.com</a><br>
-    🌐 <a href="https://slowlyy.com">https://slowlyy.com</a></p>
+      <h2>🔐 Your Security Responsibilities</h2>
+      <ul>
+        <li>Keep your seed phrase secure and private</li>
+        <li>Do not share device passcode or biometric access</li>
+        <li>Understand lost seed phrases cannot be recovered</li>
+        <li>Use the app responsibly on testnet</li>
+      </ul>
+
+      <h2>🔄 Updates to This Policy</h2>
+      <p>We may update this Privacy Policy to reflect changes in practices or legal requirements. Updates will be posted in the app and on this page. Continued use constitutes acceptance of the revised policy.</p>
+
+      <h2>⚠️ Disclaimers</h2>
+      <ul>
+        <li>Slowlyy Wallet is for educational and testing purposes</li>
+        <li>Testnet software — tokens have no real-world value</li>
+        <li>Use at your own risk</li>
+        <li>Not responsible for lost access due to forgotten credentials</li>
+      </ul>
+
+      <h2>📞 Contact Us</h2>
+      <ul>
+        <li>Email: <a href="mailto:krishnarp060@gmail.com">krishnarp060@gmail.com</a></li>
+        <li>Subject: Privacy Policy Inquiry</li>
+      </ul>
+
+      <a class="back-link" href="/">← Back to Home</a>
+    </div>
   </section>
 
   <footer>
     &copy; 2025 Slowlyy. All rights reserved.
   </footer>
-
 </body>
 </html>
