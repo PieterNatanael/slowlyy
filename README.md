@@ -287,3 +287,298 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slowlyy — Slow Crypto Wallet</title>
+  <style>
+    :root {
+      --bg: #111;
+      --fg: #eee;
+      --muted: #888;
+      --accent: #ffd700;
+      --link: #66ccff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      padding: 0 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 10px;
+    }
+
+    header img {
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #fff;
+      margin: 0 0 6px 0;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 40px auto;
+    }
+
+    h2 {
+      color: var(--accent);
+      margin-top: 40px;
+    }
+
+    a { color: var(--link); text-decoration: none; }
+
+    ul { padding-left: 20px; }
+    li { margin-bottom: 8px; }
+
+    form {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    textarea {
+      background: #222;
+      color: var(--fg);
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      resize: vertical;
+      margin-bottom: 10px;
+    }
+
+    input, button {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    input[type="email"] { background: #222; color: var(--fg); }
+
+    button {
+      background: var(--accent);
+      color: #000;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover { background: #ffcc00; }
+
+    footer {
+      text-align: center;
+      margin: 50px 0;
+      font-size: 0.9em;
+      color: var(--muted);
+    }
+
+    .cta { margin: 20px 0; text-align: center; }
+
+    /* App Store button (animated + gradient) */
+    .appstore-button {
+      display: inline-block;
+      background: linear-gradient(90deg, #66ccff, #3399ff);
+      color: #000;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 15px;
+      transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      will-change: transform;
+    }
+    .appstore-button:hover {
+      background: linear-gradient(90deg, #3399ff, #66ccff);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .appstore-button:active { transform: translateY(1px); }
+
+    /* Announcement + banner */
+    .announcement {
+      margin-top: 10px;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .banner {
+      max-width: 900px;
+      margin: 16px auto 0;
+      background: linear-gradient(90deg, rgba(255,215,0,0.08), rgba(102,204,255,0.08));
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #ddd;
+      padding: 12px 16px;
+      border-radius: 12px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .banner strong { color: #fff; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      font-size: 0.9em;
+      white-space: nowrap;
+    }
+
+    /* Info cards for Testnet/Mainnet */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 720px) {
+      .cards { grid-template-columns: 1fr 1fr; }
+    }
+    .card {
+      background: #151515;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .card h3 { margin-top: 0; color: var(--accent); }
+    .card ul { margin: 10px 0 0 18px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png?v=2" alt="Slowlyy Logo" class="logo" />
+    <h1>Self-custody crypto wallets built for HODLers</h1>
+    <p><strong>Meet Slowlyy — a slower (safer) crypto wallet</strong></p>
+    <p class="announcement">🎉 Good news! Slowlyy is now available on the Apple App Store!</p>
+    <div class="cta">
+      <a href="https://apps.apple.com/in/app/slowlyy-crypto-wallet/id6751106285" target="_blank" class="appstore-button" rel="noopener">
+        📲 Try Slowlyy on the Apple App Store
+      </a>
+    </div>
+
+    <!-- Compact banner directly under header -->
+    <div class="banner" role="status" aria-live="polite">
+      <span class="badge">🚀 Testnet Live</span>
+      <span>Try Slowlyy safely with a <strong>30‑minute delay</strong> on every transaction.</span>
+      <span class="badge">🔜 Mainnet</span>
+      <span>Coming with configurable <strong>3–30 day delay</strong> + support for Bitcoin, Ethereum, Cardano.</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>The Problem</h2>
+    <p>
+      For newcomers to crypto, using a personal wallet on mobile phones, laptops, and desktop computers—known as self-custody—can be risky. Today’s hackers can gain remote and unauthorized access to devices through malware or other methods, making it possible to steal funds without being noticed. For those holding small amounts of crypto, a hardware wallet feels like too much—and an exchange doesn’t feel right either.
+    </p>
+  </section>
+
+  <section>
+    <h2>Solution: Slowlyy</h2>
+    <p>
+      A safer self-custody wallet for mobile phones, laptops, and desktop computers. Slowlyy adds a configurable delay to every transaction, giving time to spot problems and stop theft—without giving up control. Just added time for safety and peace of mind.
+    </p>
+  </section>
+
+  <section>
+    <h2>How It Works: Testnet vs Mainnet</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>🧪 Testnet (v1) — Live Now</h3>
+        <ul>
+          <li><strong>Fixed 30‑minute delay</strong> on each transaction for a safe concept demo.</li>
+          <li>Use testnet funds — <em>no real value at risk</em>.</li>
+          <li>Great for exploring the experience and sharing feedback.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🛡️ Mainnet — In Development</h3>
+        <ul>
+          <li><strong>User‑configurable 3–30 day delay</strong> for stronger protection.</li>
+          <li>Planned network support: <strong>Bitcoin, Ethereum, Cardano</strong> (more to come).</li>
+          <li>Ongoing security hardening and UX refinements.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Benefits</h2>
+    <ul>
+      <li>Available on mobile phones, laptops, and desktop computers for secure access anytime, anywhere</li>
+      <li>Drastically reduces risk of fast-draining malware</li>
+      <li>No third-party custody: users still own their private keys</li>
+      <li>Tamper-resistant validation via dual sources and cryptographic signatures</li>
+      <li>User-friendly recovery buffer: aligns with real-world financial risk controls</li>
+    </ul>
+  </section>
+  
+  <section>
+    <div class="cta" style="text-align: left;">
+      <a href="/whitepaper" style="display: inline-block; margin: 10px 0;">📄 Read Our White Paper</a><br>
+      <a href="/privacypolicy" style="display: inline-block; margin: 10px 0;">📄 Read Our Privacy Policy</a><br>
+    </div>
+  </section>
+
+  <section>
+    <h2>Help Stress-Test Slowlyy With Radical Honesty and Full Transparency</h2>
+    <p>
+    We’re not asking for hype. Try Slowlyy. Break it. Tell us what feels wrong, confusing, or pointless. Share what gives you confidence. Every raw truth helps us make it safer for everyone.
+    </p>
+    </section>
+    
+    <section>
+    <h2>Leave Us a Message</h2>
+    <form action="https://formspree.io/f/mdkddzvq" method="POST">
+    <textarea name="feedback" placeholder="Your radical honesty & full transparency — no filter." rows="6" required></textarea>
+    <input type="email" name="email" placeholder="Your email (optional)" />
+    <button type="submit">Send Feedback</button>
+    </form>
+  
+    <h2>You can also reach out directly to the cofounders:</h2>
+    <ul>
+    <li><a href="https://www.linkedin.com/in/pieternatanael" target="_blank">Pieter Natanael</a></li>
+    <li><a href="https://www.linkedin.com/in/krishna-rp/" target="_blank">Krishna Patidar</a></li>
+    </ul>
+    </section>
+
+  <footer>
+    &copy; 2025 Slowlyy. All rights reserved
+  </footer>
+
+</body>
+</html>
