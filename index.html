@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,7 +100,7 @@
 
     .cta { margin: 20px 0; text-align: center; }
 
-    /* App Store button (animated + gradient) */
+    /* App Store button */
     .appstore-button {
       display: inline-block;
       background: linear-gradient(90deg, #66ccff, #3399ff);
@@ -115,7 +112,6 @@
       margin-top: 15px;
       transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      will-change: transform;
     }
     .appstore-button:hover {
       background: linear-gradient(90deg, #3399ff, #66ccff);
@@ -124,7 +120,26 @@
     }
     .appstore-button:active { transform: translateY(1px); }
 
-    /* Announcement + banner */
+    /* ChatGPT button */
+    .chatgpt-button {
+      display: inline-block;
+      background: linear-gradient(90deg, #10a37f, #1fbf90);
+      color: #000;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 15px;
+      transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .chatgpt-button:hover {
+      background: linear-gradient(90deg, #1fbf90, #10a37f);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    /* Banner + badges */
     .announcement {
       margin-top: 10px;
       color: var(--accent);
@@ -159,7 +174,7 @@
       white-space: nowrap;
     }
 
-    /* Info cards for Testnet/Mainnet */
+    /* Info cards */
     .cards {
       display: grid;
       grid-template-columns: 1fr;
@@ -185,18 +200,25 @@
     <h1>Self-custody crypto wallets built for HODLers</h1>
     <p><strong>Meet Slowlyy — a slower (safer) crypto wallet</strong></p>
     <p class="announcement">Slowlyy is now live on the Apple App Store! Everyone is invited to stress-test our idea and share radical honesty & full transparency feedback.</p>
+
     <div class="cta">
       <a href="https://apps.apple.com/in/app/slowlyy-crypto-wallet/id6751106285" target="_blank" class="appstore-button" rel="noopener">
         📲 Try Slowlyy on the Apple App Store
       </a>
+
+      <a href="https://chat.openai.com/?q=What%20is%20Slowlyy%20Crypto%20Wallet%3F"
+         target="_blank"
+         rel="noopener"
+         class="chatgpt-button">
+         💬 Ask ChatGPT what is Slowlyy Crypto Wallet
+      </a>
     </div>
 
-    <!-- Compact banner directly under header -->
     <div class="banner" role="status" aria-live="polite">
       <span class="badge">🚀 Testnet Live</span>
-      <span>Try Slowlyy safely with a <strong>30‑minute delay</strong> on every transaction.</span>
+      <span>Try Slowlyy safely with a <strong>30-minute delay</strong> on every transaction.</span>
       <span class="badge">🔜 Mainnet</span>
-      <span>Coming with configurable <strong>3–30 day delay</strong> + support for Bitcoin, Ethereum, Cardano.</span>
+      <span>Coming with configurable <strong>3–30 day delay</strong> + support for Bitcoin, Ethereum, BNB, and Cardano.</span>
     </div>
   </header>
 
@@ -220,17 +242,17 @@
       <div class="card">
         <h3>🧪 Testnet (v1) — Live Now</h3>
         <ul>
-          <li><strong>Experience a 30-minute delay and see slow transfers in action</li>
+          <li><strong>Experience a 30-minute delay</strong> and see slow transfers in action.</li>
           <li>Use testnet funds — <em>no real value at risk</em>.</li>
-          <li>With the seed phrase shown only once and meant to be stored safely offline as a last resort</li>
-          <li>Experience if something goes wrong, time itself offers protection.</li>
+          <li>Seed phrase shown only once — store it safely offline as a last resort.</li>
+          <li>If something goes wrong, time itself offers protection.</li>
         </ul>
       </div>
       <div class="card">
         <h3>🛡️ Mainnet — In Development</h3>
         <ul>
-          <li><strong>User‑configurable 3–30 day delay</strong> for stronger protection.</li>
-          <li>Planned network support: <strong>Bitcoin, Ethereum, Cardano</strong> (more to come).</li>
+          <li><strong>User-configurable 3–30 day delay</strong> for stronger protection.</li>
+          <li>Planned support for <strong>Bitcoin, Ethereum, BNB, and Cardano</strong> (more to come).</li>
           <li>Ongoing security hardening and UX refinements.</li>
         </ul>
       </div>
@@ -240,9 +262,9 @@
   <section>
     <h2>Benefits</h2>
     <ul>
-      <li>Available on mobile phones, laptops, and desktop computers for secure access anytime, anywhere</li>
-      <li>No third-party custody: users still own their private keys</li>
-      <li>Tamper-resistant validation via dual sources and cryptographic signatures</li>
+      <li>Available on mobile, laptop, and desktop for secure access anytime.</li>
+      <li>No third-party custody: users own their private keys.</li>
+      <li>Tamper-resistant validation via dual sources and cryptographic signatures.</li>
     </ul>
   </section>
   
@@ -256,24 +278,24 @@
   <section>
     <h2>Help Stress-Test Slowlyy With Radical Honesty and Full Transparency</h2>
     <p>
-    We’re not asking for hype. Try Slowlyy. Break it. Tell us what feels wrong, confusing, or pointless. Share what gives you confidence. Every raw truth helps us make it safer for everyone.
+      We’re not asking for hype. Try Slowlyy. Break it. Tell us what feels wrong, confusing, or pointless. Share what gives you confidence. Every raw truth helps us make it safer for everyone.
     </p>
-    </section>
+  </section>
     
-    <section>
+  <section>
     <h2>Leave Us a Message</h2>
     <form action="https://formspree.io/f/mdkddzvq" method="POST">
-    <textarea name="feedback" placeholder="Your radical honesty & full transparency — no filter." rows="6" required></textarea>
-    <input type="email" name="email" placeholder="Your email (optional)" />
-    <button type="submit">Send Feedback</button>
+      <textarea name="feedback" placeholder="Your radical honesty & full transparency — no filter." rows="6" required></textarea>
+      <input type="email" name="email" placeholder="Your email (optional)" />
+      <button type="submit">Send Feedback</button>
     </form>
   
     <h2>You can also reach out directly to the cofounders:</h2>
     <ul>
-    <li><a href="https://www.linkedin.com/in/pieternatanael" target="_blank">Pieter Natanael</a></li>
-    <li><a href="https://www.linkedin.com/in/krishna-rp/" target="_blank">Krishna Patidar</a></li>
+      <li><a href="https://www.linkedin.com/in/pieternatanael" target="_blank">Pieter Natanael</a></li>
+      <li><a href="https://www.linkedin.com/in/krishna-rp/" target="_blank">Krishna Patidar</a></li>
     </ul>
-    </section>
+  </section>
 
   <footer>
     &copy; 2025 Slowlyy. All rights reserved
