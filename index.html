@@ -4,250 +4,603 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Slowlyy — Slow Crypto Wallet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #111;
-      --fg: #eee;
-      --muted: #888;
-      --accent: #ffd700;
-      --link: #66ccff;
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
     }
 
-    * { box-sizing: border-box; }
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-card: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --accent-purple: #ab9ff2;
+      --accent-blue: #66ccff;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+    }
 
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: var(--bg);
-      color: var(--fg);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
       line-height: 1.6;
-      padding: 0 20px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    header {
-      text-align: center;
-      padding: 40px 20px 10px;
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
     }
 
-    header img {
-      max-width: 300px;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 2em;
-      color: #fff;
-      margin: 0 0 6px 0;
-    }
-
-    section {
-      max-width: 800px;
-      margin: 40px auto;
-    }
-
-    h2 {
-      color: var(--accent);
-      margin-top: 40px;
-    }
-
-    a { color: var(--link); text-decoration: none; }
-
-    ul { padding-left: 20px; }
-    li { margin-bottom: 8px; }
-
-    form {
-      margin-top: 30px;
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
     }
 
-    textarea {
-      background: #222;
-      color: var(--fg);
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
-      resize: vertical;
-      margin-bottom: 10px;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
     }
 
-    input, button {
-      padding: 10px;
-      margin-bottom: 10px;
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      transition: transform 0.3s ease;
     }
 
-    input[type="email"] { background: #222; color: var(--fg); }
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
-    button {
-      background: var(--accent);
+    .logo:hover .logo-icon {
+      transform: rotate(5deg) scale(1.1);
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn-primary {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
       color: #000;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    button:hover { background: #ffcc00; }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(171, 159, 242, 0.3);
+    }
 
-    footer {
+    .btn-green {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #10a37f, #1fbf90);
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-green:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(16, 163, 127, 0.4);
+    }
+
+    .btn-secondary {
+      padding: 10px 20px;
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
       text-align: center;
-      margin: 50px 0;
-      font-size: 0.9em;
-      color: var(--muted);
     }
 
-    .cta { margin: 20px 0; text-align: center; }
-
-    /* App Store button */
-    .appstore-button {
-      display: inline-block;
-      background: linear-gradient(90deg, #66ccff, #3399ff);
-      color: #000;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-weight: bold;
-      text-decoration: none;
-      margin-top: 15px;
-      transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-    .appstore-button:hover {
-      background: linear-gradient(90deg, #3399ff, #66ccff);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-    }
-    .appstore-button:active { transform: translateY(1px); }
-
-    /* ChatGPT button */
-    .chatgpt-button {
-      display: inline-block;
-      background: linear-gradient(90deg, #10a37f, #1fbf90);
-      color: #000;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-weight: bold;
-      text-decoration: none;
-      margin-top: 15px;
-      transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-    .chatgpt-button:hover {
-      background: linear-gradient(90deg, #1fbf90, #10a37f);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(171, 159, 242, 0.1);
+      border: 1px solid rgba(171, 159, 242, 0.2);
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent-purple);
+      margin-bottom: 24px;
     }
 
-    /* Banner + badges */
-    .announcement {
-      margin-top: 10px;
-      color: var(--accent);
-      font-weight: bold;
-      font-size: 1.1em;
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 80px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
+    .hero-subtitle {
+      font-size: 20px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+    }
+
+    /* Banner */
     .banner {
       max-width: 900px;
-      margin: 16px auto 0;
-      background: linear-gradient(90deg, rgba(255,215,0,0.08), rgba(102,204,255,0.08));
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #ddd;
-      padding: 12px 16px;
-      border-radius: 12px;
+      margin: 0 auto 80px;
+      background: linear-gradient(90deg, rgba(171, 159, 242, 0.08), rgba(102, 204, 255, 0.08));
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .banner-row {
       display: flex;
       gap: 12px;
       align-items: center;
       justify-content: center;
-      text-align: center;
+      flex-wrap: wrap;
     }
-    .banner strong { color: #fff; }
+
+    /* Center banner before problem section */
+    #the-problem {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #the-problem .banner {
+      margin-bottom: 40px;
+    }
 
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      font-size: 0.9em;
+      padding: 6px 12px;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 14px;
+      font-weight: 600;
       white-space: nowrap;
     }
 
-    /* Info cards */
-    .cards {
+    /* Section */
+    section {
+      max-width: 1200px;
+      margin: 0 auto 30px;
+      padding: 0 24px;
+    }
+
+    h2 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-title h2 {
+      background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Feature Cards */
+    .cards-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
     }
-    @media (min-width: 720px) {
-      .cards { grid-template-columns: 1fr 1fr; }
-    }
+
     .card {
-      background: #151515;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 14px;
-      padding: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+      transition: all 0.3s;
     }
-    .card h3 { margin-top: 0; color: var(--accent); }
-    .card ul { margin: 10px 0 0 18px; }
+
+    .card:hover {
+      border-color: var(--accent-purple);
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card li {
+      padding: 8px 0;
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .card li strong {
+      color: var(--text-primary);
+    }
+
+    /* Content Sections */
+    .content-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 48px;
+      margin-bottom: 24px;
+    }
+
+    .content-section h2 {
+      font-size: 32px;
+      margin-bottom: 24px;
+    }
+
+    .content-section p {
+      color: var(--text-secondary);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .content-section ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 24px;
+    }
+
+    .content-section li {
+      padding: 12px 0;
+      padding-left: 32px;
+      position: relative;
+      color: var(--text-secondary);
+      font-size: 17px;
+    }
+
+    .content-section li:before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent-purple);
+      font-weight: 600;
+    }
+
+    /* Links */
+    .link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 32px 0;
+    }
+
+    .link-list a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 500;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .link-list a:hover {
+      color: var(--accent-purple);
+    }
+
+    /* Form */
+    .feedback-form {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 48px;
+      margin-top: 48px;
+    }
+
+    .feedback-form h2 {
+      font-size: 32px;
+      margin-bottom: 24px;
+    }
+
+    textarea, input[type="email"] {
+      width: 100%;
+      background: var(--bg-dark);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 16px;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+
+    textarea:focus, input[type="email"]:focus {
+      outline: none;
+      border-color: var(--accent-purple);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    button[type="button"] {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button[type="button"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(171, 159, 242, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 64px 24px;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 120px;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 80px 24px 60px;
+      }
+
+      .content-section {
+        padding: 32px 24px;
+      }
+
+      .feedback-form {
+        padding: 32px 24px;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+/* Hero Logo Animation */
+.hero-logo {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 32px;
+  /* animation: float 3s ease-in-out infinite; */
+  filter: drop-shadow(0 10px 30px rgba(171, 159, 242, 0.3));
+}
+
+
+    .hero-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="logo.png?v=2" alt="Slowlyy Logo" class="logo" />
-    <h1>Self-custody crypto wallets built for HODLers</h1>
-    <p><strong>Meet Slowlyy — a slower (safer) crypto wallet</strong></p>
-    <p class="announcement">Slowlyy is now live on the Apple App Store! Everyone is invited to stress-test our idea and share radical honesty & full transparency feedback.</p>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="/" class="logo">
+        <div class="logo-icon">
+          <img src="logo.png" alt="Slowlyy Logo" />
+        </div>
+        <span class="logo-text">Slowlyy</span>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#whitepaper">Whitepaper</a></li>
+      </ul>
+      
+      <div class="nav-cta">
+        <a href="https://apps.apple.com/in/app/slowlyy-crypto-wallet/id6751106285" class="btn-primary" target="_blank" rel="noopener">
+          Try Slowlyy
+        </a>
+      </div>
+    </div>
+  </nav>
 
-    <div class="cta">
-      <a href="https://apps.apple.com/in/app/slowlyy-crypto-wallet/id6751106285" target="_blank" class="appstore-button" rel="noopener">
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-logo">
+      <img src="logo.png" alt="Slowlyy Logo" />
+    </div>
+    
+    <div class="hero-badge">
+
+    </div>
+    
+    <h1>Crypto wallets built for HODLers</h1>
+    
+    <p class="hero-subtitle">
+ 
+    </p>
+    
+    <div class="hero-buttons">
+      <a href="https://apps.apple.com/in/app/slowlyy-crypto-wallet/id6751106285" class="btn-primary" target="_blank" rel="noopener">
         📲 Try Slowlyy on the Apple App Store
       </a>
-
-      <a href="https://chat.openai.com/?q=What%20is%20Slowlyy%20Crypto%20Wallet%3F"
-         target="_blank"
-         rel="noopener"
-         class="chatgpt-button">
-         💬 Ask ChatGPT what is Slowlyy Crypto Wallet
+      <a href="https://chat.openai.com/?q=What%20is%20Slowlyy%20Crypto%20Wallet%3F" class="btn-green" target="_blank" rel="noopener">
+        💬 Ask ChatGPT about Slowlyy
       </a>
     </div>
 
-    <div class="banner" role="status" aria-live="polite">
-      <span class="badge">🚀 Testnet Live</span>
-      <span>Try Slowlyy safely with a <strong>30-minute delay</strong> on every transaction.</span>
-      <span class="badge">🔜 Mainnet</span>
-      <span>Coming with configurable <strong>3–30 day delay</strong> + support for Bitcoin, Ethereum, BNB, and Cardano.</span>
+
+
+  <!-- The Problem -->
+  <section id="the-problem">
+
+
+    <div class="content-section">
+      <h2>The Problem</h2>
+      <p>
+       Regular self-custody online wallets have a major problem:If the device is hacked, stolen, or compromised, the assets can be drained fast — even with passwords and 2FA.
+      </p>
     </div>
-  </header>
-
-  <section>
-    <h2>The Problem</h2>
-    <p>
-      Crypto holders constantly worry about the safety of their assets. One wrong click or download could expose their wallets — and most people feel helpless or unsure how to protect themselves. They’ve heard that keeping crypto in a hot wallet is unsafe — but that’s like telling someone not to carry cash in their handbag and blaming them if it gets stolen. The fear of losing everything in minutes creates anxiety about keeping crypto online, even though they still want the convenience of managing it on their devices.
-    </p>
   </section>
 
-  <section>
-    <h2>Solution: Slowlyy</h2>
-    <p>
-      Most people rely on regular wallets with passwords or two-factor authentication — better than nothing, but still vulnerable. Instead of forcing users to change how they store crypto, we built a smarter layer of protection. Our system locks transactions behind a configurable delay, meaning crypto can’t be moved — by anyone, including the owner — until the set time passes. This gives users real security without losing the freedom and convenience they expect.
-    </p>
+  <!-- Solution -->
+  <section id="solution">
+    <div class="content-section">
+      <h2>Solution: Slowlyy</h2>
+      <p>
+        Slowlyy is a self-custody online wallet with a 3–30 day delay that protects your crypto from hacks, theft, and costly mistakes.
+
+      </p>
+    </div>
   </section>
 
-  <section>
-    <h2>How It Works: Testnet vs Mainnet</h2>
-    <div class="cards">
+  <!-- How It Works -->
+  <section id="how-it-works">
+    <div class="section-title">
+      <h2>How It Works: Testnet vs Mainnet</h2>
+    </div>
+    
+    <div class="cards-grid">
       <div class="card">
         <h3>🧪 Testnet (v1) — Live Now</h3>
         <ul>
           <li><strong>Experience a 30-minute delay</strong> and see slow transfers in action.</li>
           <li>Use testnet funds — <em>no real value at risk</em>.</li>
           <li>Seed phrase shown only once — store it safely offline as a last resort.</li>
-          <li>If something goes wrong, time itself offers protection.</li>
         </ul>
       </div>
+      
       <div class="card">
         <h3>🛡️ Mainnet — In Development</h3>
         <ul>
@@ -259,47 +612,112 @@
     </div>
   </section>
 
-  <section>
-    <h2>Benefits</h2>
-    <ul>
-      <li>Available on mobile, laptop, and desktop for secure access anytime.</li>
-      <li>No third-party custody: users own their private keys.</li>
-      <li>Tamper-resistant validation via dual sources and cryptographic signatures.</li>
-    </ul>
-  </section>
-  
-  <section>
-    <div class="cta" style="text-align: left;">
-      <a href="/whitepaper" style="display: inline-block; margin: 10px 0;">📄 Read Our White Paper</a><br>
-      <a href="/privacypolicy" style="display: inline-block; margin: 10px 0;">📄 Read Our Privacy Policy</a><br>
+  <!-- Benefits -->
+  <section id="benefits">
+    <div class="section-title">
+      <h2>Benefits</h2>
+    </div>
+    
+    <div class="content-section">
+      <ul>
+        <li>Available on mobile, laptop, and desktop for secure online access anytime.</li>
+        <li>No third-party custody: users own their private keys.</li>
+        <li>Tamper-resistant validation via dual sources and cryptographic signatures.</li>
+        <li>Time-based protection that gives you the power to cancel suspicious transactions.</li>
+        <li>Peace of mind knowing your assets can't be drained instantly.</li>
+      </ul>
     </div>
   </section>
 
-  <section>
-    <h2>Help Stress-Test Slowlyy With Radical Honesty and Full Transparency</h2>
-    <p>
-      We’re not asking for hype. Try Slowlyy. Break it. Tell us what feels wrong, confusing, or pointless. Share what gives you confidence. Every raw truth helps us make it safer for everyone.
-    </p>
-  </section>
-    
-  <section>
-    <h2>Leave Us a Message</h2>
-    <form action="https://formspree.io/f/mdkddzvq" method="POST">
-      <textarea name="feedback" placeholder="Your radical honesty & full transparency — no filter." rows="6" required></textarea>
-      <input type="email" name="email" placeholder="Your email (optional)" />
-      <button type="submit">Send Feedback</button>
-    </form>
-  
-    <h2>You can also reach out directly to the cofounders:</h2>
-    <ul>
-      <li><a href="https://www.linkedin.com/in/pieternatanael" target="_blank">Pieter Natanael</a></li>
-      <li><a href="https://www.linkedin.com/in/krishna-rp/" target="_blank">Krishna Patidar</a></li>
-    </ul>
+  <!-- Resources -->
+  <section id="whitepaper">
+    <div class="content-section">
+      <h2>Learn More</h2>
+      <div class="link-list">
+        <a href="/whitepaper">📄 Read Our White Paper</a>
+        <a href="/privacypolicy">📄 Read Our Privacy Policy</a>
+      </div>
+    </div>
   </section>
 
+  <!-- Feedback Section -->
+  <section id="feedback">
+    <div class="section-title">
+      <h2>Help Stress-Test Slowlyy</h2>
+      <p style="color: var(--text-secondary); font-size: 18px; max-width: 700px; margin: 0 auto;">
+        We're not asking for hype. Try Slowlyy. Break it. Tell us what feels wrong, confusing, or pointless. Share what gives you confidence. Every raw truth helps us make it safer for everyone.
+      </p>
+    </div>
+
+    <div class="feedback-form">
+      <h2>Leave Us a Message</h2>
+      <textarea id="feedback" placeholder="Your radical honesty & full transparency — no filter." rows="6"></textarea>
+      <input type="email" id="email" placeholder="Your email (optional)" />
+      <button type="button" onclick="handleSubmit()">Send Feedback</button>
+    </div>
+
+    <div class="content-section" style="margin-top: 48px;">
+      <h2>You can also reach out directly to the cofounders:</h2>
+      <div class="link-list">
+        <a href="https://www.linkedin.com/in/pieternatanael" target="_blank">Pieter Natanael</a>
+        <a href="https://www.linkedin.com/in/krishna-rp/" target="_blank">Krishna Patidar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    &copy; 2025 Slowlyy. All rights reserved
+    © 2025 Slowlyy. All rights reserved
   </footer>
+
+  <script>
+    function handleSubmit() {
+      const feedback = document.getElementById('feedback').value;
+      const email = document.getElementById('email').value;
+      
+      if (!feedback) {
+        alert('Please enter your feedback');
+        return;
+      }
+
+      // Create form data
+      const formData = new FormData();
+      formData.append('feedback', feedback);
+      formData.append('email', email);
+
+      // Submit to Formspree
+      fetch('https://formspree.io/f/mdkddzvq', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          alert('Thank you for your feedback!');
+          document.getElementById('feedback').value = '';
+          document.getElementById('email').value = '';
+        } else {
+          alert('Something went wrong. Please try again.');
+        }
+      })
+      .catch(error => {
+        alert('Something went wrong. Please try again.');
+      });
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
