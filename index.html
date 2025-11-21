@@ -205,13 +205,25 @@
       line-height: 1.6;
     }
 
-    .hero-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 64px;
-    }
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 64px;
+}
+
+.hero-buttons a {
+  flex: 1;
+  padding: 16px 32px;
+  font-size: 16px;
+  border-radius: 14px;
+  text-align: center;
+  min-width: 200px;        /* prevent tiny buttons on mobile */
+  max-width: 420px;        /* stops buttons from getting too wide on desktop */
+  box-sizing: border-box;
+}
+
 
     /* Banner */
     .banner {
