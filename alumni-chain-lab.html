@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alumni Chain Lab – Slowlyy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-card: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --accent-purple: #ab9ff2;
+      --accent-blue: #66ccff;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .logo img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 100px;
+      background: rgba(171,159,242,0.1);
+      border: 1px solid rgba(171,159,242,0.2);
+      color: var(--accent-purple);
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 7vw, 72px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary, .btn-secondary {
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+      color: #000;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+    }
+
+    /* Sections */
+    section {
+      max-width: 1000px;
+      margin: 0 auto 60px;
+      padding: 0 24px;
+    }
+
+    .content {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 48px;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 24px;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 17px;
+      margin-bottom: 16px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      padding-left: 28px;
+      position: relative;
+      margin-bottom: 12px;
+      color: var(--text-secondary);
+      font-size: 17px;
+    }
+
+    li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent-purple);
+    }
+
+    footer {
+      text-align: center;
+      padding: 64px 24px;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-container">
+    <a href="/" class="logo">
+      <img src="logo.png" alt="Slowlyy Logo">
+      <strong>Slowlyy</strong>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#join">Membership</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Alumni-only • Independent • Builders-first</div>
+  <h1>Alumni Chain Lab</h1>
+  <p>
+    An independent, alumni-only builders lab where Apple Developer Academy graduates
+    learn blockchain by collaborating on real products and shipping production-grade code.
+  </p>
+  <div class="hero-buttons">
+    <a href="#overview" class="btn-primary">What is Alumni Chain Lab</a>
+    <a href="#join" class="btn-secondary">Join (Alumni Only)</a>
+  </div>
+</header>
+
+<!-- Overview -->
+<section id="overview">
+  <div class="content">
+    <h2>Overview</h2>
+    <p>
+      Alumni Chain Lab is an independent initiative founded by Apple Developer Academy alumni.
+      It exists to help alumni continue growing as builders by working on real blockchain-enabled
+      products in a trusted, professional environment.
+    </p>
+    <p>
+      This is not a classroom, bootcamp, or investment group.
+      It is a working product lab focused on collaboration, code review, and shipping.
+    </p>
+  </div>
+</section>
+
+<!-- Why -->
+<section>
+  <div class="content">
+    <h2>Why Alumni Chain Lab Exists</h2>
+    <ul>
+      <li>Support alumni affected by the tech hiring slowdown</li>
+      <li>Provide verifiable, portfolio-ready experience</li>
+      <li>Maintain momentum through real collaboration</li>
+      <li>Build a high-signal alumni builders network</li>
+    </ul>
+  </div>
+</section>
+
+<!-- How -->
+<section id="how">
+  <div class="content">
+    <h2>How It Works</h2>
+    <ul>
+      <li>Members collaborate on real production codebases</li>
+      <li>Work is proposed, reviewed, and merged via GitHub</li>
+      <li>Security and user safety are mandatory considerations</li>
+      <li>Production-ready contributions may be shipped publicly</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Product -->
+<section>
+  <div class="content">
+    <h2>Flagship Product Lab: Slowlyy</h2>
+    <p>
+      Slowlyy is a real, alumni-founded product used as the primary learning
+      and contribution platform inside Alumni Chain Lab.
+    </p>
+    <p>
+      Members gain exposure to real architecture decisions, security trade-offs,
+      and production constraints — experience rarely found in personal projects.
+    </p>
+  </div>
+</section>
+
+<!-- Join -->
+<section id="join">
+  <div class="content">
+    <h2>Membership</h2>
+    <ul>
+      <li>Apple Developer Academy alumni only</li>
+      <li>Verification required</li>
+      <li>Public recognition is optional</li>
+      <li>Contributors receive public credit for shipped work</li>
+    </ul>
+    <p style="margin-top:24px;font-size:14px;">
+      Alumni Chain Lab is independent and not affiliated with Apple or the Apple Developer Academy.
+    </p>
+  </div>
+</section>
+
+<footer>
+  © 2025 Slowlyy — Alumni Chain Lab
+</footer>
+
+</body>
+</html>
