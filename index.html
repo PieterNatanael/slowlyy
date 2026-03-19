@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Slowlyy Crypto Wallet</title>
+  <title>Slowlyy | Self-Custody With Time to React</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { 
       box-sizing: border-box; 
@@ -20,23 +20,26 @@
 
 
     :root {
-      --bg-dark: #0a0a0a;
-      --bg-card: #1a1a1a;
-      --text-primary: #ffffff;
-      --text-secondary: #a0a0a0;
-      --accent-purple: #ab9ff2;
-      --accent-blue: #66ccff;
-      --border-subtle: rgba(255, 255, 255, 0.08);
+      --bg-dark: #151311;
+      --bg-muted: #1d1a17;
+      --bg-surface: #221f1b;
+      --text-primary: #f3eee6;
+      --text-secondary: #b8ac9d;
+      --accent-gold: #c78b4a;
+      --accent-sage: #77837a;
+      --border-subtle: rgba(243, 238, 230, 0.12);
+      --border-strong: rgba(199, 139, 74, 0.35);
+      --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.28);
     }
 
     /* Slowlyy X ACL Banner */
 .acl-banner {
   max-width: 900px;
   margin: 80px auto;
-  background: linear-gradient(90deg, rgba(171, 159, 242, 0.08), rgba(102, 204, 255, 0.08));
-  border: 1px solid var(--border-subtle);
-  border-radius: 20px;
-  padding: 32px;
+  background: linear-gradient(135deg, rgba(199, 139, 74, 0.1), rgba(119, 131, 122, 0.08));
+  border: 1px solid var(--border-strong);
+  border-radius: 28px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,15 +52,14 @@
   max-width: 80%;
   border-radius: 24px;
   object-fit: contain;
-  filter: drop-shadow(0 10px 30px rgba(171, 159, 242, 0.3));
+  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.28));
 }
 
 .acl-banner h2 {
-  font-size: 32px;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--text-primary);
   margin-bottom: 16px;
 }
 
@@ -71,8 +73,11 @@
 
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg-dark);
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(199, 139, 74, 0.14), transparent 32%),
+        radial-gradient(circle at top right, rgba(119, 131, 122, 0.1), transparent 28%),
+        var(--bg-dark);
       color: var(--text-primary);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -84,7 +89,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(10, 10, 10, 0.8);
+      background: rgba(21, 19, 17, 0.88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-subtle);
     }
@@ -126,7 +131,8 @@
     .logo-text {
       font-size: 20px;
       font-weight: 600;
-      letter-spacing: -0.02em;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
     }
 
     .nav-links {
@@ -154,8 +160,8 @@
 
     .btn-primary {
       padding: 10px 20px;
-      background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-      color: #000;
+      background: var(--accent-gold);
+      color: #161310;
       border: none;
       border-radius: 12px;
       font-weight: 600;
@@ -168,33 +174,14 @@
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(171, 159, 242, 0.3);
-    }
-
-    .btn-green {
-      padding: 10px 20px;
-      background: linear-gradient(135deg, #10a37f, #1fbf90);
-      color: #000;
-      border: none;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 15px;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn-green:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(16, 163, 127, 0.4);
+      box-shadow: 0 10px 24px rgba(199, 139, 74, 0.22);
     }
 
     .btn-secondary {
       padding: 10px 20px;
       background: transparent;
       color: var(--text-primary);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid rgba(243, 238, 230, 0.16);
       border-radius: 12px;
       font-weight: 600;
       font-size: 15px;
@@ -205,16 +192,19 @@
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(243, 238, 230, 0.04);
+      border-color: rgba(243, 238, 230, 0.24);
     }
 
     /* Hero Section */
     .hero {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 120px 24px 80px;
-      text-align: center;
+      padding: 110px 24px 72px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      gap: 56px;
+      align-items: center;
     }
 
     .hero-badge {
@@ -222,41 +212,41 @@
       align-items: center;
       gap: 8px;
       padding: 8px 16px;
-      background: rgba(171, 159, 242, 0.1);
-      border: 1px solid rgba(171, 159, 242, 0.2);
+      background: rgba(199, 139, 74, 0.1);
+      border: 1px solid rgba(199, 139, 74, 0.28);
       border-radius: 100px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
-      color: var(--accent-purple);
-      margin-bottom: 24px;
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
     .hero h1 {
-      font-size: clamp(48px, 8vw, 80px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(58px, 9vw, 96px);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
       margin-bottom: 24px;
-      background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      max-width: 10ch;
     }
 
     .hero-subtitle {
       font-size: 20px;
       color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto 32px;
+      max-width: 640px;
+      margin: 0 0 32px;
       line-height: 1.6;
     }
 
 .hero-buttons {
   display: flex;
   gap: 16px;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  margin-bottom: 64px;
+  margin-bottom: 32px;
 }
 
 .hero-buttons a {
@@ -270,51 +260,135 @@
   box-sizing: border-box;
 }
 
+.hero-note {
+  max-width: 560px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 15px;
+}
 
-    /* Banner */
-    .banner {
-      max-width: 900px;
-      margin: 0 auto 80px;
-      background: linear-gradient(90deg, rgba(171, 159, 242, 0.08), rgba(102, 204, 255, 0.08));
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      text-align: center;
-    }
+.hero-note strong {
+  color: var(--text-primary);
+}
 
-    .banner-row {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+.hero-visual {
+  background: linear-gradient(180deg, rgba(34, 31, 27, 0.96), rgba(29, 26, 23, 0.96));
+  border: 1px solid var(--border-subtle);
+  border-radius: 32px;
+  padding: 28px;
+  box-shadow: var(--shadow-soft);
+}
 
-    /* Center banner before problem section */
-    #the-problem {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+.visual-frame {
+  background: rgba(243, 238, 230, 0.03);
+  border: 1px solid rgba(243, 238, 230, 0.08);
+  border-radius: 24px;
+  padding: 24px;
+}
 
-    #the-problem .banner {
-      margin-bottom: 40px;
-    }
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--accent-gold);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 100px;
-      background: rgba(255, 255, 255, 0.08);
-      font-size: 14px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
+.visual-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 38px;
+  line-height: 1;
+  margin-bottom: 18px;
+}
+
+.transaction-card {
+  background: var(--bg-dark);
+  border: 1px solid rgba(243, 238, 230, 0.1);
+  border-radius: 22px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.transaction-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.transaction-row strong {
+  color: var(--text-primary);
+  font-size: 16px;
+}
+
+.timeline {
+  position: relative;
+  margin: 24px 0 12px;
+  padding-left: 30px;
+}
+
+.timeline:before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: rgba(243, 238, 230, 0.14);
+}
+
+.timeline-step {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.timeline-step:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-step:before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(243, 238, 230, 0.18);
+  background: var(--bg-surface);
+}
+
+.timeline-step.is-active:before {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 6px rgba(199, 139, 74, 0.12);
+}
+
+.timeline-step small {
+  display: block;
+  color: var(--accent-sage);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.timeline-step strong {
+  display: block;
+  font-size: 17px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.timeline-step p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
 
     /* Section */
     section {
@@ -324,48 +398,79 @@
     }
 
     h2 {
-      font-size: clamp(36px, 5vw, 56px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(42px, 5vw, 62px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
       line-height: 1.2;
       margin-bottom: 16px;
     }
 
     .section-title {
-      text-align: center;
-      margin-bottom: 64px;
+      text-align: left;
+      margin-bottom: 36px;
+      max-width: 760px;
     }
 
     .section-title h2 {
-      background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--text-primary);
+    }
+
+    .section-title p {
+      color: var(--text-secondary);
+      font-size: 18px;
+      max-width: 680px;
     }
 
     /* Feature Cards */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin-top: 48px;
+      gap: 20px;
+      margin-top: 32px;
     }
 
     .card {
-      background: var(--bg-card);
+      background: linear-gradient(180deg, rgba(34, 31, 27, 0.95), rgba(29, 26, 23, 0.95));
       border: 1px solid var(--border-subtle);
-      border-radius: 20px;
+      border-radius: 24px;
       padding: 32px;
-      transition: all 0.3s;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+      box-shadow: var(--shadow-soft);
     }
 
     .card:hover {
-      border-color: var(--accent-purple);
-      transform: translateY(-4px);
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+    }
+
+    .card-label {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(243, 238, 230, 0.05);
+      color: var(--text-secondary);
+    }
+
+    .card-label.is-live {
+      background: rgba(119, 131, 122, 0.14);
+      color: #cbd5ce;
+    }
+
+    .card-label.is-build {
+      background: rgba(199, 139, 74, 0.14);
+      color: #f2c99c;
     }
 
     .card h3 {
-      font-size: 24px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 36px;
       font-weight: 600;
       margin-bottom: 12px;
       color: var(--text-primary);
@@ -377,7 +482,7 @@
     }
 
     .card li {
-      padding: 8px 0;
+      padding: 10px 0;
       color: var(--text-secondary);
       font-size: 15px;
       line-height: 1.6;
@@ -389,15 +494,16 @@
 
     /* Content Sections */
     .content-section {
-      background: var(--bg-card);
+      background: linear-gradient(180deg, rgba(34, 31, 27, 0.98), rgba(29, 26, 23, 0.98));
       border: 1px solid var(--border-subtle);
-      border-radius: 20px;
+      border-radius: 28px;
       padding: 48px;
       margin-bottom: 24px;
+      box-shadow: var(--shadow-soft);
     }
 
     .content-section h2 {
-      font-size: 32px;
+      font-size: 46px;
       margin-bottom: 24px;
     }
 
@@ -422,12 +528,19 @@
     }
 
     .content-section li:before {
-      content: "→";
+      content: "01";
       position: absolute;
       left: 0;
-      color: var(--accent-purple);
+      color: var(--accent-gold);
       font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.08em;
     }
+
+    .content-section li:nth-child(2):before { content: "02"; }
+    .content-section li:nth-child(3):before { content: "03"; }
+    .content-section li:nth-child(4):before { content: "04"; }
+    .content-section li:nth-child(5):before { content: "05"; }
 
     /* Links */
     .link-list {
@@ -438,7 +551,7 @@
     }
 
     .link-list a {
-      color: var(--accent-blue);
+      color: var(--text-primary);
       text-decoration: none;
       font-size: 17px;
       font-weight: 500;
@@ -449,16 +562,17 @@
     }
 
     .link-list a:hover {
-      color: var(--accent-purple);
+      color: var(--accent-gold);
     }
 
     /* Form */
     .feedback-form {
-      background: var(--bg-card);
+      background: linear-gradient(180deg, rgba(34, 31, 27, 0.98), rgba(29, 26, 23, 0.98));
       border: 1px solid var(--border-subtle);
-      border-radius: 20px;
+      border-radius: 28px;
       padding: 48px;
       margin-top: 48px;
+      box-shadow: var(--shadow-soft);
     }
 
     .feedback-form h2 {
@@ -468,12 +582,12 @@
 
     textarea, input[type="email"] {
       width: 100%;
-      background: var(--bg-dark);
+      background: rgba(21, 19, 17, 0.8);
       border: 1px solid var(--border-subtle);
       border-radius: 12px;
       padding: 16px;
       color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Manrope', sans-serif;
       font-size: 15px;
       margin-bottom: 16px;
       transition: border-color 0.2s;
@@ -481,7 +595,7 @@
 
     textarea:focus, input[type="email"]:focus {
       outline: none;
-      border-color: var(--accent-purple);
+      border-color: var(--accent-gold);
     }
 
     textarea {
@@ -492,8 +606,8 @@
     button[type="button"] {
       width: 100%;
       padding: 16px;
-      background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-      color: #000;
+      background: var(--accent-gold);
+      color: #161310;
       border: none;
       border-radius: 12px;
       font-weight: 600;
@@ -504,7 +618,7 @@
 
     button[type="button"]:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(171, 159, 242, 0.4);
+      box-shadow: 0 8px 24px rgba(199, 139, 74, 0.28);
     }
 
     /* Footer */
@@ -524,7 +638,9 @@
       }
 
       .hero {
-        padding: 80px 24px 60px;
+        grid-template-columns: 1fr;
+        padding: 72px 24px 48px;
+        gap: 32px;
       }
 
       .content-section {
@@ -538,16 +654,20 @@
       .cards-grid {
         grid-template-columns: 1fr;
       }
+
+      .hero h1 {
+        max-width: none;
+      }
     }
 
 /* Hero Logo Animation */
 .hero-logo {
-  width: 220px;
-  height: 220px;
-  margin: 0 auto 32px;
+  width: 228px;
+  height: 228px;
+  margin: 0 0 24px;
   
   /* animation: float 3s ease-in-out infinite; */
-  filter: drop-shadow(0 10px 30px rgba(171, 159, 242, 0.3));
+  filter: none;
 }
 
 
@@ -558,14 +678,6 @@
       object-fit: contain;
     }
 
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
   </style>
 </head>
 <body>
@@ -584,8 +696,8 @@
       
       <ul class="nav-links">
         <li><a href="#top">Overview</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#how-it-works">Product State</a></li>
+        <li><a href="#benefits">Why Delay Matters</a></li>
         <li><a href="#whitepaper">Whitepaper</a></li>
       </ul>
       
@@ -599,45 +711,77 @@
 
   <!-- Hero Section -->
   <header class="hero">
-    <div class="hero-logo">
-      <img src="logo.png" alt="Slowlyy Logo" />
-    </div>
-    
-    <div class="hero-badge">
+    <div class="hero-copy">
+      <div class="hero-logo">
+        <img src="logo.png" alt="Slowlyy Logo" />
+      </div>
 
-    </div>
-    
-    <h1>Slowlyy Crypto Wallet. <br> HODL with confidence.</h1>
-    
-    <p class="hero-subtitle">
- 
-    </p>
-    
-<div class="hero-buttons">
-      <a href="https://apps.apple.com/in/app/slowlyy-crypto-wallet/id6751106285" target="_blank" rel="noopener">
-        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 70px;">
-      </a>
-      <a href="#" onclick="alert('Android version not available yet'); return false;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" style="height: 65px;">
-      </a>
+      <div class="hero-badge">
+        Self-custody with time to react
+      </div>
+
+      <h1>Crypto should not move at the speed of panic.</h1>
+
+      <p class="hero-subtitle">
+        Slowlyy is a self-custody wallet built around deliberate delay. Outgoing transfers do not leave instantly, which gives you time to catch theft, coercion, and expensive mistakes before they become final.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="https://apps.apple.com/in/app/slowlyy-crypto-wallet/id6751106285" class="btn-primary" target="_blank" rel="noopener">Try the testnet</a>
+        <a href="#whitepaper" class="btn-secondary">Read the white paper</a>
+      </div>
+
+      <p class="hero-note">
+        <strong>Why slowly?</strong> Most self-custody products optimize for speed. Slowlyy treats time as part of security.
+      </p>
     </div>
 
-    <div style="margin-top: 48px; margin-bottom: 48px; text-align: center; display: flex; justify-content: center;">
-      <a href="https://chat.openai.com/?q=What%20is%20Slowlyy%20Crypto%20Wallet%3F" class="btn-green" target="_blank" rel="noopener" style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 20px 32px; max-width: 100%;">
-        <img src="chatGPT.jpg" alt="ChatGPT" style="width: 350px; max-width: 100%; height: auto; object-fit: contain; border-radius: 40px;">
-        Ask ChatGPT about Slowlyy
-      </a>
+    <div class="hero-visual">
+      <div class="visual-frame">
+        <span class="eyebrow">Withdrawal timeline</span>
+        <h2 class="visual-title">A transfer should have a cooling period.</h2>
+        <div class="transaction-card">
+          <div class="transaction-row">
+            <span>Request</span>
+            <strong>0.42 BTC</strong>
+          </div>
+          <div class="transaction-row">
+            <span>Destination</span>
+            <span>bc1q...9x4m</span>
+          </div>
+          <div class="transaction-row">
+            <span>Current state</span>
+            <span>Pending release</span>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-step">
+            <small>Step 01</small>
+            <strong>Request initiated</strong>
+            <p>The transfer is submitted, signed, and logged.</p>
+          </div>
+          <div class="timeline-step is-active">
+            <small>Step 02</small>
+            <strong>Cooling period</strong>
+            <p>Time exists for review, cancellation, and recovery if something looks wrong.</p>
+          </div>
+          <div class="timeline-step">
+            <small>Step 03</small>
+            <strong>Final release</strong>
+            <p>Funds move only after the delay has completed.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    
+  </header>
 
   <!-- The Problem -->
   <section id="the-problem">
-
-
     <div class="content-section">
-      <h2>The Problem</h2>
+      <h2>Self-custody fails fast.</h2>
       <p>
-       Regular self-custody online wallets have a major problem: If the device is hacked, stolen, or compromised, the assets can be drained fast, even with passwords and 2FA.
+       In most wallets, the worst moment is also the fastest one. If a phone is stolen, malware gets access, or a tired user approves the wrong transfer, funds can disappear in minutes. Passwords and 2FA help, but they do not change the fact that irreversible money movement happens too quickly.
       </p>
     </div>
   </section>
@@ -645,10 +789,9 @@
   <!-- Solution -->
   <section id="solution">
     <div class="content-section">
-      <h2>Solution: Slowlyy</h2>
+      <h2>Slowlyy adds time to the threat model.</h2>
       <p>
-        Slowlyy is a self-custody online wallet with a 3–30 day delay that protects your crypto from hacks, theft, and costly mistakes.
-
+        Instead of treating speed as a feature, Slowlyy treats it as a risk. Outgoing transactions wait before release. That waiting period creates room to review, to notice something suspicious, and to stop damage before it becomes permanent.
       </p>
     </div>
   </section>
@@ -656,25 +799,32 @@
   <!-- How It Works -->
   <section id="how-it-works">
     <div class="section-title">
-      <h2>How It Works: Testnet vs Mainnet</h2>
+      <h2>Product state</h2>
+      <p>
+        The live product today is built to demonstrate the withdrawal model clearly. Mainnet is being shaped around the same principle, with longer configurable delays and stronger hardening.
+      </p>
     </div>
     
     <div class="cards-grid">
       <div class="card">
-        <h3>🧪 Testnet (v1) — Live Now</h3>
+        <div class="card-label is-live">Live now</div>
+        <h3>Testnet</h3>
         <ul>
-          <li><strong>Experience a 30 minute delay</strong> and see slow transfers in action.</li>
-          <li>Use testnet funds, no real value at risk.</li>
-          <li>Seed phrase shown only once, store it safely offline as a last resort.</li>
+          <li><strong>30 minute transfer delay</strong> so the core idea is visible immediately.</li>
+          <li>Uses testnet funds only, with no real value at risk.</li>
+          <li>Best way to understand the product flow before mainnet exists.</li>
+          <li>Seed phrase is shown once and should be stored offline as a recovery fallback.</li>
         </ul>
       </div>
       
       <div class="card">
-        <h3>🛡️ Mainnet — In Development</h3>
+        <div class="card-label is-build">In development</div>
+        <h3>Mainnet</h3>
         <ul>
-          <li><strong>User-configurable 3–30 day delay</strong> for stronger protection.</li>
-          <li>Planned support for <strong>Bitcoin, Ethereum, BNB, and Cardano</strong> (more to come).</li>
-          <li>Ongoing security hardening and UX refinements.</li>
+          <li><strong>Configurable 3 to 30 day delay</strong> for materially stronger protection.</li>
+          <li>Planned support for <strong>Bitcoin, Ethereum, BNB, and Cardano</strong>, with more to follow.</li>
+          <li>Security hardening, cancellation logic, and recovery-oriented UX are still in progress.</li>
+          <li>The goal is not just custody, but time to respond when something goes wrong.</li>
         </ul>
       </div>
     </div>
@@ -683,16 +833,16 @@
   <!-- Benefits -->
   <section id="benefits">
     <div class="section-title">
-      <h2>Benefits</h2>
+      <h2>Why delay matters</h2>
     </div>
     
     <div class="content-section">
       <ul>
-        <li>Available on mobile, laptop, and desktop for secure online access anytime.</li>
-        <li>No third-party custody: users own their private keys.</li>
-        <li>Tamper-resistant validation via dual sources and cryptographic signatures.</li>
-        <li>Time-based protection that gives you the power to cancel suspicious transactions.</li>
-        <li>Peace of mind knowing your assets can't be drained instantly.</li>
+        <li>A thief who gets your device should not get your funds in the same hour.</li>
+        <li>Self-custody remains intact: users still hold their own keys.</li>
+        <li>The waiting period gives space to review destination addresses and catch mistakes.</li>
+        <li>Suspicious outgoing transfers can be noticed before they settle.</li>
+        <li>Security is not only cryptography. It is also the time available to react.</li>
       </ul>
     </div>
   </section>
@@ -701,11 +851,9 @@
   <!-- Slowlyy X ACL Banner -->
 <section class="acl-banner">
   <img src="acl.png" alt="Slowlyy X ACL" />
-  <h2>Slowlyy X ACL </h2>
+  <h2>Slowlyy x ACL</h2>
   <p>
-    Slowlyy is now connected with <strong>ACL (Alumni Chain Lab)</strong> as part of ACL’s pilot projects.  
-    Apple Developer Academy alumni can collaborate, experiment, and build real features that serve users,  
-    working hands-on with <strong>Xcode and SwiftUI</strong> while exploring blockchain and crypto products.
+    Slowlyy is connected with <strong>ACL (Alumni Chain Lab)</strong> as part of ACL pilot work. Apple Developer Academy alumni can collaborate on real product features, work hands-on with <strong>Xcode and SwiftUI</strong>, and explore what careful crypto product design looks like in practice.
   </p>
   <a href="https://slowlyy.com/alumni-chain-lab" class="btn-primary" target="_blank" rel="noopener">
     Join ACL
@@ -716,10 +864,10 @@
   <!-- Resources -->
   <section id="whitepaper">
     <div class="content-section">
-      <h2>Learn More</h2>
+      <h2>Read the thinking behind it</h2>
       <div class="link-list">
-        <a href="/whitepaper">📄 Read Our White Paper</a>
-        <a href="/privacypolicy">📄 Read Our Privacy Policy</a>
+        <a href="/whitepaper">Read the white paper</a>
+        <a href="/privacypolicy">Read the privacy policy</a>
       </div>
     </div>
   </section>
@@ -727,21 +875,21 @@
   <!-- Feedback Section -->
   <section id="feedback">
     <div class="section-title">
-      <h2>Help Stress-Test Slowlyy</h2>
+      <h2>Help stress-test the idea</h2>
       <p style="color: var(--text-secondary); font-size: 18px; max-width: 700px; margin: 0 auto;">
-        We're not asking for hype. Try Slowlyy. Break it. Tell us what feels wrong, confusing, or pointless. Share what gives you confidence. Every raw truth helps us make it safer for everyone.
+        This page is not asking for hype. Try Slowlyy. Break it. Tell us what feels confusing, weak, too slow, not slow enough, or simply unnecessary. Honest criticism is more useful than praise.
       </p>
     </div>
 
     <div class="feedback-form">
-      <h2>Leave Us a Message</h2>
-      <textarea id="feedback" placeholder="Your radical honesty, full transparency and no filter." rows="6"></textarea>
+      <h2>Leave a note</h2>
+      <textarea id="feedback" placeholder="What feels unclear, risky, awkward, or worth improving?" rows="6"></textarea>
       <input type="email" id="email" placeholder="Your email (optional)" />
       <button type="button" onclick="handleSubmit()">Send Feedback</button>
     </div>
 
     <div class="content-section" style="margin-top: 48px;">
-      <h2>You can also reach out directly to the cofounders:</h2>
+      <h2>Or speak directly with the cofounders</h2>
       <div class="link-list">
         <a href="https://www.linkedin.com/in/pieternatanael" target="_blank">Pieter Natanael</a>
         <a href="https://www.linkedin.com/in/krishna-rp/" target="_blank">Krishna Patidar</a>
