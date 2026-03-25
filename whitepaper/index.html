@@ -3,154 +3,453 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Slowlyy Whitepaper</title>
-  <meta name="description" content="Read the Slowlyy whitepaper and security model for a self-custody crypto wallet with delayed outgoing transfers." />
+  <title>Slowlyy Whitepaper | Transaction Governance Before Final Settlement</title>
+  <meta name="description" content="Read the Slowlyy whitepaper on delayed settlement, transaction governance, pending transfer receipts, and the future of human and AI-agent initiated crypto payments." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://slowlyy.com/whitepaper" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Slowlyy Whitepaper" />
-  <meta property="og:description" content="The Slowlyy whitepaper explains the delayed-transfer wallet model, security assumptions, and technical architecture." />
+  <meta property="og:description" content="A whitepaper on Slowlyy as a transaction governance layer that separates payment initiation from irreversible blockchain settlement." />
   <meta property="og:url" content="https://slowlyy.com/whitepaper" />
   <meta property="og:image" content="https://slowlyy.com/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Slowlyy Whitepaper" />
+  <meta name="twitter:description" content="A whitepaper on Slowlyy as a transaction governance layer that separates payment initiation from irreversible blockchain settlement." />
+  <meta name="twitter:image" content="https://slowlyy.com/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Slowlyy Whitepaper",
+      "description": "A whitepaper on Slowlyy as a transaction governance layer that separates payment initiation from irreversible blockchain settlement.",
+      "mainEntityOfPage": "https://slowlyy.com/whitepaper",
+      "author": {
+        "@type": "Organization",
+        "name": "Slowlyy"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Slowlyy",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://slowlyy.com/logo.png"
+        }
+      }
+    }
+  </script>
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      line-height: 1.6;
+    * {
+      box-sizing: border-box;
       margin: 0;
-      padding: 2rem;
-      background: #f9f9f9;
-      color: #222;
+      padding: 0;
     }
-    h1, h2 {
-      color: #111;
+
+    :root {
+      --bg-dark: #151311;
+      --bg-surface: #221f1b;
+      --text-primary: #f3eee6;
+      --text-secondary: #b8ac9d;
+      --accent-gold: #c78b4a;
+      --accent-sage: #77837a;
+      --border-subtle: rgba(243, 238, 230, 0.12);
+      --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.28);
     }
+
+    body {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.7;
+      background:
+        radial-gradient(circle at top left, rgba(199, 139, 74, 0.14), transparent 30%),
+        var(--bg-dark);
+      color: var(--text-primary);
+      padding: 0 24px 96px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .shell {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 28px 0;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+    }
+
+    .back-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .back-link:hover {
+      color: var(--accent-gold);
+      border-color: var(--accent-gold);
+    }
+
+    .hero {
+      padding: 40px 0 36px;
+      border-top: 1px solid var(--border-subtle);
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
     h1 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 0.3rem;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(52px, 9vw, 86px);
+      line-height: 0.96;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+      margin-bottom: 18px;
     }
-    code, pre {
-      background: #eee;
-      padding: 0.5rem;
-      border-radius: 5px;
-      display: block;
-      overflow-x: auto;
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
+
+    .hero p {
+      color: var(--text-secondary);
+      max-width: 760px;
+      font-size: 19px;
     }
+
+    .paper {
+      display: grid;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
     section {
-      margin-bottom: 2.5rem;
+      background: linear-gradient(180deg, rgba(34, 31, 27, 0.98), rgba(29, 26, 23, 0.98));
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 40px;
+      line-height: 1.05;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 30px;
+      line-height: 1.1;
+      font-weight: 600;
+      margin: 22px 0 10px;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 17px;
+      margin-bottom: 14px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      margin-top: 16px;
+      padding-left: 22px;
+      color: var(--text-secondary);
+    }
+
+    li {
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+
+    strong {
+      color: var(--text-primary);
+    }
+
+    .callout {
+      border-left: 3px solid var(--accent-sage);
+      padding-left: 16px;
+      color: var(--text-primary);
+      margin-top: 14px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      background: rgba(243, 238, 230, 0.06);
+      padding: 0.1rem 0.35rem;
+      border-radius: 6px;
+      color: var(--text-primary);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .footer-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(243, 238, 230, 0.16);
+      padding-bottom: 2px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-gold);
+      border-color: var(--accent-gold);
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      section {
+        padding: 24px;
+      }
+
+      h2 {
+        font-size: 34px;
+      }
+
+      h3 {
+        font-size: 27px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Slowlyy: A slower (safer) crypto wallet</h1>
+  <div class="shell">
+    <div class="topbar">
+      <a href="/" class="brand">
+        <img src="/logo.png" alt="Slowlyy logo" />
+        <span>Slowlyy</span>
+      </a>
+      <a href="/" class="back-link">Back to homepage</a>
+    </div>
 
-  <section>
-    <h2>Abstract</h2>
-    <p>
-      Slowlyy is a crypto wallet designed to mitigate the risks of wallet-draining attacks by introducing a mandatory 3–30 day transaction delay. By combining a dual-source date verification system with client-side enforcement and cryptographic validation, Slowlyy provides users a critical time window to detect unauthorized access before any crypto leaves their wallet.
-    </p>
-  </section>
+    <header class="hero">
+      <span class="eyebrow">Whitepaper</span>
+      <h1>Transaction governance before final settlement.</h1>
+      <p>
+        Slowlyy is built around a simple but consequential idea: blockchain payment initiation and blockchain finality should not always be the same moment. This paper describes Slowlyy as a transaction governance layer that creates a pending review window before irreversible settlement for both human users and, in the future, AI agents.
+      </p>
+    </header>
 
-  <section>
-    <h2>Problem Statement</h2>
-    <p>
-For newcomers to crypto, using a personal wallet on mobile phones, laptops, and desktop computers—known as self-custody—can be risky. Today’s hackers can gain remote and unauthorized access to devices through malware or other methods, making it possible to steal funds without being noticed. For those holding small amounts of crypto, a hardware wallet feels like too much—and an exchange doesn’t feel right either.
-    </p>
-  </section>
+    <main class="paper">
+      <section>
+        <h2>1. Abstract</h2>
+        <p>
+          Slowlyy began as a safer self-custody wallet concept: an outgoing transfer would not settle immediately, but instead enter a mandatory pending period during which the owner retained veto power. That design remains the practical foundation of the product.
+        </p>
+        <p>
+          This paper argues that the underlying architecture is broader than a wallet feature. Slowlyy can be understood as a <strong>transaction governance layer</strong> that separates payment initiation from final settlement. In a human context, that separation creates time to catch theft, coercion, and costly mistakes. In an AI-agent context, the same separation can serve as a governance boundary between autonomous intent and irreversible blockchain execution.
+        </p>
+        <p>
+          At initiation time, the system can verify sufficient balance and produce a signed pending receipt that signals a real scheduled payment state, even though final settlement remains delayed and revocable under defined conditions. This pending layer is the conceptual center of Slowlyy.
+        </p>
+      </section>
 
-  <section>
-    <h2>Solution: Slowlyy</h2>
-    <p>
-     A safer self-custody wallet for mobile phones, laptops, and desktop computers. Slowlyy adds a 3–30 day delay to every transaction, giving time to spot problems and stop theft—without giving up control. Just added time for safety and peace of mind.
-    </p>
+      <section>
+        <h2>2. The problem</h2>
+        <p>
+          Blockchain settlement is powerful because it is difficult to reverse. That same property makes it unforgiving. In most wallet designs, a transfer request and a finalized outgoing payment are tightly coupled. Once the relevant signing conditions are met, funds can leave almost immediately.
+        </p>
+        <p>
+          This coupling creates a structural problem. The moment of compromise and the moment of loss can be nearly identical. If a phone is stolen, malware gains control, a user is socially engineered, or the wrong destination address is approved, there may be little or no time to intervene.
+        </p>
+        <p>
+          The problem becomes sharper in an AI-agent world. Agents can execute instructions quickly and repeatedly. They can initiate payments based on prompts, policies, or tool chains, but blockchain settlement remains irreversible even when the initiating logic is wrong, ambiguous, manipulated, or poorly supervised.
+        </p>
+        <p class="callout">
+          Fast initiation should not automatically imply fast finality.
+        </p>
+      </section>
 
-  </section>
-
-  <section>
-    <h2>Security Architecture</h2>
-    <h3>Dual Time Verification</h3>
-    <p>To prevent clock tampering or spoofed timestamps, Slowlyy uses a dual-source date confirmation system:</p>
-    <ul>
-      <li><strong>WorldTimeAPI</strong>: Public, independent API providing UTC time. Used to prevent local clock spoofing.</li>
-      <li><strong>Custom /date API with HMAC Signature</strong>:<br/>
-        Self-hosted endpoint (e.g., <code>https://api.slowlyy.xyz/date</code>) returns JSON:
-        <pre><code>{
-  "date": "2025-08-01",
-  "signature": "..." // HMAC-SHA256 of date
-}</code></pre>
-        Signature validated by app using shared secret. Ensures authenticity and integrity of the date.
-      </li>
-    </ul>
-    <p>Both APIs must agree on the date for any transaction check to pass.</p>
-
-    <h3>Local Time Ignored</h3>
-    <p>Slowlyy does not trust the device’s internal clock. All date validations happen against the above external sources. This removes the risk of attackers spoofing local time to prematurely release funds.</p>
-
-    <h3>Tamper-Resistant Logic</h3>
-    <ul>
-      <li>Transactions are stored locally and/or off-chain until 3-30 days pass.</li>
-      <li>Unlock logic is hard-coded to reject any date mismatch or invalid signature.</li>
-      <li>If both APIs are unreachable, app defaults to blocking the transaction.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Developer Integration Flow</h2>
-    <ol>
-      <li>On transaction initiation, the app stores the <code>timestamp</code> and <code>unlock_date = timestamp + 30 days</code>.</li>
-      <li>On app open or send attempt:
+      <section>
+        <h2>3. Thesis</h2>
+        <p>
+          Slowlyy is a transaction governance layer that separates transaction initiation from final settlement, creating a pending review window before irreversible blockchain settlement.
+        </p>
+        <p>
+          This pending state is not merely a UI delay. It is a control boundary. During the window, a transfer can be reviewed, vetoed, or allowed to continue under defined release conditions. The result is a different payment model:
+        </p>
         <ul>
-          <li>Request UTC date from WorldTimeAPI</li>
-          <li>Request <code>/date</code> from Slowlyy API</li>
-          <li>Compare both dates</li>
-          <li>Verify HMAC signature</li>
+          <li><strong>Intent</strong> can exist before settlement.</li>
+          <li><strong>Commitment signaling</strong> can exist before finality.</li>
+          <li><strong>Human or policy oversight</strong> can exist between initiation and release.</li>
         </ul>
-      </li>
-      <li>If both sources match, signature is valid, and <code>current date >= unlock_date</code>, then transaction can be broadcast to the blockchain.</li>
-    </ol>
-  </section>
+        <p>
+          In the present product, this appears as a delayed self-custody wallet. In the broader strategic framing, it becomes a governance layer for both human-initiated and AI-agent initiated payments.
+        </p>
+      </section>
 
-  <section>
-    <h2>Security Assumptions</h2>
-    <ul>
-      <li>The shared HMAC key is known only to the app and server.</li>
-      <li>HTTPS is used to prevent MITM attacks.</li>
-      <li>Neither date source can independently spoof the time without detection.</li>
-      <li>User has visibility and can cancel transactions within the 3-30-day window.</li>
-    </ul>
-  </section>
+      <section>
+        <h2>4. System model</h2>
+        <p>
+          The Slowlyy model separates a transaction into at least two distinct phases: <strong>initiation</strong> and <strong>release</strong>.
+        </p>
+        <ol>
+          <li>A transfer request is created.</li>
+          <li>The system verifies the relevant preconditions, such as sufficient balance and required internal checks.</li>
+          <li>The transaction enters a pending state instead of settling immediately.</li>
+          <li>A delay period begins.</li>
+          <li>The owner or governing policy layer retains veto or cancellation ability during that period.</li>
+          <li>Final settlement occurs only if release conditions remain satisfied until the end of the waiting window.</li>
+        </ol>
+        <p>
+          In the currently live testnet, this model is demonstrated with a 30 minute delay. In the intended mainnet design, the delay is planned to be configurable between 3 and 30 days.
+        </p>
+      </section>
 
-  <section>
-    <h2>Benefits</h2>
-    <ul>
-        <li> Available on mobile phones, laptops, and desktop computers for secure access anytime, anywhere</li>
-      <li>Drastically reduces risk of fast-draining malware</li>
-      <li>No third-party custody: users still own their private keys</li>
-      <li>Tamper-resistant validation via dual sources and cryptographic signatures</li>
-      <li>User-friendly recovery buffer: aligns with real-world financial risk controls</li>
-    </ul>
-  </section>
+      <section>
+        <h2>5. Pending settlement receipt</h2>
+        <p>
+          A key extension of the Slowlyy architecture is the idea of a signed pending receipt. When a payment is initiated and validated against current state, the system can produce a cryptographically signed record that the payment request exists, that the necessary balance was available at initiation time, and that the transfer has entered a governed pending window.
+        </p>
+        <p>
+          This receipt should not be confused with final settlement. It is better understood as a <strong>revocable pending commitment</strong> under defined rules.
+        </p>
+        <h3>What the receipt can signal</h3>
+        <ul>
+          <li>A transfer request was created intentionally or by an authorized initiating actor.</li>
+          <li>The system observed sufficient balance when the request was created.</li>
+          <li>The request entered a pending settlement workflow.</li>
+          <li>The payment is scheduled, but not yet final.</li>
+        </ul>
+        <h3>What the receipt does not guarantee</h3>
+        <ul>
+          <li>It does not mean funds have already settled on-chain.</li>
+          <li>It does not remove veto or cancellation rights during the pending window.</li>
+          <li>It does not override later release failures or safety checks.</li>
+        </ul>
+        <p>
+          If developed carefully, this receipt model could become a useful machine-readable commitment primitive for commerce, workflows, and agent coordination where immediate finality is not desirable.
+        </p>
+      </section>
 
+      <section>
+        <h2>6. Human governance and AI-agent governance</h2>
+        <h3>Human governance</h3>
+        <p>
+          In the human use case, the pending window exists to counter fast compromise. A user may initiate a legitimate payment and still benefit from time to reconsider, verify the destination, or cancel the transfer. A user under attack may discover suspicious activity before funds move permanently.
+        </p>
 
+        <h3>AI-agent governance</h3>
+        <p>
+          In an AI-agent context, the pending window becomes even more important. Agents may be authorized to trigger payments within rules, but they should not necessarily control immediate irreversible settlement. The Slowlyy model creates a layer between <strong>agent intent</strong> and <strong>blockchain finality</strong>.
+        </p>
+        <p>
+          This can support a more governed model of autonomous payments:
+        </p>
+        <ul>
+          <li>Agents can initiate requests.</li>
+          <li>Humans or policies can review or veto during the pending window.</li>
+          <li>Recipients can receive structured evidence that payment is scheduled.</li>
+          <li>Irreversible settlement happens only after the governance window closes.</li>
+        </ul>
+        <p>
+          This architecture is relevant for a future in which AI systems perform financial actions, but society still demands meaningful control before irreversible consequences.
+        </p>
+      </section>
 
-  <section>
-    <h2>Conclusion</h2>
-    <p>
-      Slowlyy is built on a simple principle: slowing down crypto can actually make it safer. With a minimal but powerful dual-verification time lock, users gain crucial time to act in emergencies. This wallet architecture redefines digital self-custody security by prioritizing control and recovery over speed.
-    </p>
-  </section>
+      <section>
+        <h2>7. Security assumptions and failure modes</h2>
+        <p>
+          A credible governance layer must be explicit about what it assumes and how it fails.
+        </p>
+        <h3>Security assumptions</h3>
+        <ul>
+          <li>The user remains the ultimate authority over release or cancellation rules in the self-custody model.</li>
+          <li>Time-based release conditions are validated using trust assumptions stronger than a local device clock alone.</li>
+          <li>The signing and receipt logic accurately represent pending state.</li>
+          <li>Network, storage, and verification components operate within expected integrity assumptions.</li>
+        </ul>
+        <h3>Failure behavior</h3>
+        <ul>
+          <li>If release conditions cannot be validated confidently, the safer default is to block settlement.</li>
+          <li>If time verification is inconsistent, the safer default is to block settlement.</li>
+          <li>If a device is compromised, the system cannot guarantee perfect prevention, but the pending window is intended to create time for detection and response.</li>
+          <li>If a pending receipt exists, its meaning must remain clearly limited to governed pending state rather than unconditional payment guarantee.</li>
+        </ul>
+        <p>
+          In other words, Slowlyy should prefer failing closed over releasing funds under uncertainty.
+        </p>
+      </section>
 
-  <section>
-    <h2>Appendix</h2>
-    <h3>WorldTimeAPI</h3>
-    <p>Sample HMAC API response:</p>
-    <pre><code>{
-  "date": "2025-08-01",
-  "signature": "f0e2b7234f1f..."
-}</code></pre>
-    <p>Signature generated using:</p>
-    <code>HMAC-SHA256(date + secret)</code>
-  </section>
+      <section>
+        <h2>8. Current product and roadmap</h2>
+        <h3>Current product reality</h3>
+        <p>
+          The current live implementation is the testnet wallet. It demonstrates the core delayed-transfer model with a 30 minute pending period. Mainnet remains in development.
+        </p>
+
+        <h3>Planned progression</h3>
+        <ul>
+          <li>Configurable 3 to 30 day delay windows in mainnet.</li>
+          <li>More explicit cancellation and review flows.</li>
+          <li>Stronger hardening of the release and verification model.</li>
+          <li>Potential recipient-visible signed pending receipts.</li>
+          <li>Potential policy and agent-facing transaction governance features.</li>
+        </ul>
+        <p>
+          The whitepaper therefore describes both a present product and a broader architecture. It should not be read as a claim that every described capability is already live today.
+        </p>
+      </section>
+
+      <section>
+        <h2>9. Conclusion</h2>
+        <p>
+          Slowlyy should not be understood only as a slower wallet. More fundamentally, it is a model for governed settlement in a world where irreversible payment systems meet increasingly autonomous actors.
+        </p>
+        <p>
+          By separating initiation from final settlement, Slowlyy creates a new payment interval: a pending state in which intent is real, oversight is still possible, and finality has not yet been granted. That interval has practical value for human users today and may become even more important as AI systems gain the ability to initiate financial actions on their own.
+        </p>
+        <p>
+          The long-term claim is simple: if blockchain finality is irreversible, then the path to finality deserves governance.
+        </p>
+      </section>
+    </main>
+
+    <div class="footer-links">
+      <a href="/what-is-slowlyy">What is Slowlyy?</a>
+      <a href="/security-model">Read the security model</a>
+      <a href="/faq">Read the FAQ</a>
+    </div>
+  </div>
 </body>
 </html>
