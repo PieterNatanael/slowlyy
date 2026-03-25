@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slowlyy Security Model | Delayed-Transfer Wallet Design</title>
+  <meta name="description" content="Read the Slowlyy security model, including delayed outgoing transfers, time verification, self-custody boundaries, and failure behavior." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://slowlyy.com/security-model" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Slowlyy Security Model" />
+  <meta property="og:description" content="A technical overview of the Slowlyy security model and why delayed outgoing transfers change the risk profile of self-custody." />
+  <meta property="og:url" content="https://slowlyy.com/security-model" />
+  <meta property="og:image" content="https://slowlyy.com/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Slowlyy Security Model" />
+  <meta name="twitter:description" content="A technical overview of the Slowlyy security model and why delayed outgoing transfers change the risk profile of self-custody." />
+  <meta name="twitter:image" content="https://slowlyy.com/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Slowlyy Security Model",
+      "description": "A technical overview of the Slowlyy security model and why delayed outgoing transfers change the risk profile of self-custody.",
+      "mainEntityOfPage": "https://slowlyy.com/security-model",
+      "author": {
+        "@type": "Organization",
+        "name": "Slowlyy"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Slowlyy",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://slowlyy.com/logo.png"
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-dark: #151311;
+      --bg-surface: #221f1b;
+      --text-primary: #f3eee6;
+      --text-secondary: #b8ac9d;
+      --accent-gold: #c78b4a;
+      --accent-sage: #77837a;
+      --border-subtle: rgba(243, 238, 230, 0.12);
+      --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    body {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(199, 139, 74, 0.14), transparent 30%),
+        var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 24px 88px;
+    }
+
+    .shell {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 28px 0;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+    }
+
+    .back-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .back-link:hover {
+      color: var(--accent-gold);
+      border-color: var(--accent-gold);
+    }
+
+    .hero {
+      padding: 40px 0 36px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(52px, 9vw, 86px);
+      line-height: 0.96;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      max-width: 11ch;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      max-width: 760px;
+      font-size: 19px;
+    }
+
+    .article {
+      display: grid;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .section {
+      background: linear-gradient(180deg, rgba(34, 31, 27, 0.98), rgba(29, 26, 23, 0.98));
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 38px;
+      line-height: 1.05;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .section p {
+      color: var(--text-secondary);
+      font-size: 17px;
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section ul {
+      list-style: none;
+      margin-top: 18px;
+    }
+
+    .section li {
+      position: relative;
+      padding-left: 28px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      font-size: 17px;
+    }
+
+    .section li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-gold);
+    }
+
+    .callout {
+      border-left: 3px solid var(--accent-sage);
+      padding-left: 16px;
+      color: var(--text-primary);
+      margin-top: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .footer-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(243, 238, 230, 0.16);
+      padding-bottom: 2px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-gold);
+      border-color: var(--accent-gold);
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section {
+        padding: 24px;
+      }
+
+      .section h2 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <a href="/" class="brand">
+        <img src="/logo.png" alt="Slowlyy logo" />
+        <span>Slowlyy</span>
+      </a>
+      <a href="/" class="back-link">Back to homepage</a>
+    </div>
+
+    <header class="hero">
+      <span class="eyebrow">Security model</span>
+      <h1>Security is also about time.</h1>
+      <p>
+        Slowlyy changes the behavior of a self-custody wallet by adding delay to outgoing transfers. The model is designed to reduce the damage caused by fast compromise, rushed approval, and irreversible mistakes.
+      </p>
+    </header>
+
+    <main class="article">
+      <section class="section">
+        <h2>Core principle</h2>
+        <p>
+          In a normal wallet, a successful compromise can become an immediate loss event. If an attacker gets access to the device or a user approves the wrong transfer, funds can move out very quickly. Slowlyy changes that assumption by separating transfer creation from transfer release.
+        </p>
+        <p class="callout">
+          The main idea is simple: a transfer request can exist before a transfer is allowed to leave.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Delayed outgoing transfers</h2>
+        <p>
+          Slowlyy introduces a waiting period between the moment an outgoing transfer is requested and the moment it can actually be broadcast or finalized. That delay creates a response window.
+        </p>
+        <ul>
+          <li>A user or attacker may be able to initiate a request.</li>
+          <li>The request does not automatically mean immediate release.</li>
+          <li>The delay period allows review, detection, and intervention.</li>
+          <li>The final movement of funds happens only after the delay condition is satisfied.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Why this changes the risk profile</h2>
+        <p>
+          Many wallet defenses focus on who controls keys, who signs transactions, or which device is trusted. Those are important, but they do not change the speed of loss once something goes wrong. Slowlyy adds a different layer: time.
+        </p>
+        <p>
+          Time matters because a user who notices suspicious activity after two minutes still has a chance to act if the wallet is designed not to release funds immediately.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Time verification and release conditions</h2>
+        <p>
+          The whitepaper describes a model in which date and time checks are not trusted solely to the local device clock. The goal is to reduce the risk that local clock manipulation could be used to bypass the waiting period.
+        </p>
+        <ul>
+          <li>External time sources can be used to validate release conditions.</li>
+          <li>The release check is intended to fail closed if validation is inconsistent.</li>
+          <li>The wallet logic should block release rather than guess when trust conditions are unclear.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Failure behavior</h2>
+        <p>
+          A security system should be judged not only by ideal operation, but by how it behaves when something breaks. The security model described for Slowlyy prefers blocking release over releasing under uncertainty.
+        </p>
+        <ul>
+          <li>If validation fails, the safer default is to block the transfer.</li>
+          <li>If expected trust signals do not match, the safer default is to block the transfer.</li>
+          <li>If the environment looks compromised, the delay window exists to buy reaction time.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Self-custody boundary</h2>
+        <p>
+          Slowlyy is intended to remain a self-custody product. The user still keeps control of their own keys. The security model is not based on handing control to a centralized custodian. Instead, it modifies the release behavior of outgoing transfers while preserving user ownership.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Current product state</h2>
+        <p>
+          The live testnet demonstrates the delayed-transfer idea with a 30 minute delay. The planned mainnet product is intended to support configurable delays from 3 to 30 days, along with stronger hardening and more refined recovery-oriented behavior.
+        </p>
+      </section>
+    </main>
+
+    <div class="footer-links">
+      <a href="/what-is-slowlyy">What is Slowlyy?</a>
+      <a href="/faq">Read the FAQ</a>
+      <a href="/whitepaper">Read the white paper</a>
+    </div>
+  </div>
+</body>
+</html>

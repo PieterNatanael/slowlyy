@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slowlyy FAQ | Delayed-Transfer Self-Custody Wallet</title>
+  <meta name="description" content="Frequently asked questions about Slowlyy, a self-custody crypto wallet with delayed outgoing transfers." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://slowlyy.com/faq" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Slowlyy FAQ" />
+  <meta property="og:description" content="Answers to common questions about Slowlyy, delayed outgoing transfers, testnet availability, and mainnet plans." />
+  <meta property="og:url" content="https://slowlyy.com/faq" />
+  <meta property="og:image" content="https://slowlyy.com/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Slowlyy FAQ" />
+  <meta name="twitter:description" content="Answers to common questions about Slowlyy, delayed outgoing transfers, testnet availability, and mainnet plans." />
+  <meta name="twitter:image" content="https://slowlyy.com/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Slowlyy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Slowlyy is a self-custody crypto wallet that adds a delay to outgoing transfers. The goal is to give users time to review, cancel, or respond before funds leave permanently."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is Slowlyy different from a normal crypto wallet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most wallets optimize for fast transfer speed. Slowlyy treats speed as a risk and adds a waiting period before outgoing funds are released."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Slowlyy self-custodial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Slowlyy is designed as a self-custody wallet, which means users keep control of their own keys rather than handing custody to a third party."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Slowlyy live now?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The testnet version is live now. Mainnet is still in development."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long is the transfer delay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The live testnet demonstrates a 30 minute delay. The planned mainnet product is intended to support a configurable delay from 3 to 30 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which blockchains will Slowlyy support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The current plan mentions support for Bitcoin, Ethereum, BNB, and Cardano, with additional chains to be considered later."
+          }
+        }
+      ]
+    }
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-dark: #151311;
+      --bg-surface: #221f1b;
+      --text-primary: #f3eee6;
+      --text-secondary: #b8ac9d;
+      --accent-gold: #c78b4a;
+      --border-subtle: rgba(243, 238, 230, 0.12);
+      --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    body {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(199, 139, 74, 0.14), transparent 30%),
+        var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 24px 80px;
+    }
+
+    .shell {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 28px 0;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+    }
+
+    .back-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .back-link:hover {
+      color: var(--accent-gold);
+      border-color: var(--accent-gold);
+    }
+
+    .hero {
+      padding: 40px 0 32px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(50px, 9vw, 82px);
+      line-height: 0.96;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      max-width: 11ch;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      max-width: 700px;
+      font-size: 19px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .faq-item {
+      background: linear-gradient(180deg, rgba(34, 31, 27, 0.98), rgba(29, 26, 23, 0.98));
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .faq-item h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 36px;
+      line-height: 1.05;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .faq-item p {
+      color: var(--text-secondary);
+      font-size: 17px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .footer-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(243, 238, 230, 0.16);
+      padding-bottom: 2px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-gold);
+      border-color: var(--accent-gold);
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .faq-item {
+        padding: 24px;
+      }
+
+      .faq-item h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <a href="/" class="brand">
+        <img src="/logo.png" alt="Slowlyy logo" />
+        <span>Slowlyy</span>
+      </a>
+      <a href="/" class="back-link">Back to homepage</a>
+    </div>
+
+    <header class="hero">
+      <span class="eyebrow">FAQ</span>
+      <h1>Plain answers about Slowlyy.</h1>
+      <p>
+        This page is written to answer the direct questions people ask about Slowlyy: what it is, how it works, what is live now, and what is still being built.
+      </p>
+    </header>
+
+    <main class="faq-list">
+      <article class="faq-item">
+        <h2>What is Slowlyy?</h2>
+        <p>
+          Slowlyy is a self-custody crypto wallet that adds a delay to outgoing transfers. The idea is simple: money should not leave instantly if there is still time to spot theft, coercion, or a costly mistake.
+        </p>
+      </article>
+
+      <article class="faq-item">
+        <h2>How is Slowlyy different from a normal crypto wallet?</h2>
+        <p>
+          Most wallets optimize for immediate transfer execution. Slowlyy adds a waiting period before outgoing funds are released, which changes the security model. The goal is to create time for review, cancellation, and recovery.
+        </p>
+      </article>
+
+      <article class="faq-item">
+        <h2>Is Slowlyy self-custodial?</h2>
+        <p>
+          Yes. Slowlyy is designed as a self-custody wallet. Users keep control of their own keys instead of handing custody to a centralized third party.
+        </p>
+      </article>
+
+      <article class="faq-item">
+        <h2>Is Slowlyy live now?</h2>
+        <p>
+          The testnet version is live now. It exists to demonstrate the delayed-transfer model clearly. The mainnet product is still in development.
+        </p>
+      </article>
+
+      <article class="faq-item">
+        <h2>How long is the transfer delay?</h2>
+        <p>
+          The current testnet demonstrates a 30 minute delay. The planned mainnet product is intended to support a configurable delay from 3 to 30 days.
+        </p>
+      </article>
+
+      <article class="faq-item">
+        <h2>Why would someone want a delayed crypto wallet?</h2>
+        <p>
+          Because many crypto losses happen fast. If a device is compromised or the wrong address is approved, a delay creates a window to notice the problem before funds are gone permanently.
+        </p>
+      </article>
+
+      <article class="faq-item">
+        <h2>Which blockchains will Slowlyy support?</h2>
+        <p>
+          The current plan mentions Bitcoin, Ethereum, BNB, and Cardano, with more chains to be considered later.
+        </p>
+      </article>
+
+      <article class="faq-item">
+        <h2>Where can I read more about the security model?</h2>
+        <p>
+          The best place to start is the Slowlyy whitepaper, which explains the delayed-transfer idea, the time-verification model, and the current security assumptions in more detail.
+        </p>
+      </article>
+    </main>
+
+    <div class="footer-links">
+      <a href="/whitepaper">Read the white paper</a>
+      <a href="/privacypolicy">Read the privacy policy</a>
+      <a href="/alumni-chain-lab">Alumni Chain Lab</a>
+    </div>
+  </div>
+</body>
+</html>

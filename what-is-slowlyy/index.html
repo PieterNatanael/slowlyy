@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Is Slowlyy? | Delayed-Transfer Self-Custody Wallet</title>
+  <meta name="description" content="Learn what Slowlyy is, how delayed outgoing transfers work, what is live now, and why Slowlyy approaches self-custody differently from normal crypto wallets." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://slowlyy.com/what-is-slowlyy" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="What Is Slowlyy?" />
+  <meta property="og:description" content="A plain-language explanation of Slowlyy, a self-custody crypto wallet with delayed outgoing transfers." />
+  <meta property="og:url" content="https://slowlyy.com/what-is-slowlyy" />
+  <meta property="og:image" content="https://slowlyy.com/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What Is Slowlyy?" />
+  <meta name="twitter:description" content="A plain-language explanation of Slowlyy, a self-custody crypto wallet with delayed outgoing transfers." />
+  <meta name="twitter:image" content="https://slowlyy.com/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "What Is Slowlyy?",
+      "description": "A plain-language explanation of Slowlyy, a self-custody crypto wallet with delayed outgoing transfers.",
+      "mainEntityOfPage": "https://slowlyy.com/what-is-slowlyy",
+      "author": {
+        "@type": "Organization",
+        "name": "Slowlyy"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Slowlyy",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://slowlyy.com/logo.png"
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-dark: #151311;
+      --bg-surface: #221f1b;
+      --text-primary: #f3eee6;
+      --text-secondary: #b8ac9d;
+      --accent-gold: #c78b4a;
+      --border-subtle: rgba(243, 238, 230, 0.12);
+      --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    body {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(199, 139, 74, 0.14), transparent 30%),
+        var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 24px 88px;
+    }
+
+    .shell {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 28px 0;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+    }
+
+    .back-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .back-link:hover {
+      color: var(--accent-gold);
+      border-color: var(--accent-gold);
+    }
+
+    .hero {
+      padding: 40px 0 36px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(52px, 9vw, 86px);
+      line-height: 0.96;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      max-width: 11ch;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      max-width: 720px;
+      font-size: 19px;
+    }
+
+    .article {
+      display: grid;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .section {
+      background: linear-gradient(180deg, rgba(34, 31, 27, 0.98), rgba(29, 26, 23, 0.98));
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 38px;
+      line-height: 1.05;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .section p {
+      color: var(--text-secondary);
+      font-size: 17px;
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section ul {
+      list-style: none;
+      margin-top: 18px;
+    }
+
+    .section li {
+      position: relative;
+      padding-left: 28px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      font-size: 17px;
+    }
+
+    .section li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-gold);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .footer-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(243, 238, 230, 0.16);
+      padding-bottom: 2px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-gold);
+      border-color: var(--accent-gold);
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section {
+        padding: 24px;
+      }
+
+      .section h2 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <a href="/" class="brand">
+        <img src="/logo.png" alt="Slowlyy logo" />
+        <span>Slowlyy</span>
+      </a>
+      <a href="/" class="back-link">Back to homepage</a>
+    </div>
+
+    <header class="hero">
+      <span class="eyebrow">What is Slowlyy?</span>
+      <h1>A slower wallet by design.</h1>
+      <p>
+        Slowlyy is a self-custody crypto wallet built around a simple idea: outgoing transfers should not always happen instantly. By adding deliberate delay, the wallet creates time to catch theft, coercion, and costly mistakes before funds move permanently.
+      </p>
+    </header>
+
+    <main class="article">
+      <section class="section">
+        <h2>What Slowlyy is</h2>
+        <p>
+          Slowlyy is a self-custody wallet for people who want to keep control of their own assets without accepting the full risk of instant irreversible transfers. It does not position speed as the main benefit. It treats speed as one of the risks that needs to be managed.
+        </p>
+        <p>
+          In practical terms, Slowlyy delays outgoing transactions. That means a transfer request can be created, but funds are not released immediately. The waiting period creates a chance to review what is happening and react if something looks wrong.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Why Slowlyy exists</h2>
+        <p>
+          Many wallet losses happen quickly. A compromised device, a stolen phone, malware, social engineering, or a simple mistake can all lead to funds leaving before the owner has time to understand what happened. Traditional wallet protections help, but they do not solve the speed problem.
+        </p>
+        <p>
+          Slowlyy exists to add time into that equation. The idea is that security is not only about key ownership and cryptography. It is also about whether there is enough time to respond before damage becomes final.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>How Slowlyy works</h2>
+        <p>
+          The wallet is designed so an outgoing transfer enters a waiting period before it is released. During that period, the user has time to review the request, verify the destination, and respond to anything suspicious.
+        </p>
+        <ul>
+          <li>A transfer request is created and recorded.</li>
+          <li>A delay period begins instead of immediate release.</li>
+          <li>The user has time to notice mistakes or suspicious activity.</li>
+          <li>Funds move only after the delay has completed.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>What is live now</h2>
+        <p>
+          The current live version is the testnet product. It is meant to demonstrate the delayed-transfer model clearly without putting real funds at risk.
+        </p>
+        <p>
+          The testnet currently uses a 30 minute delay. The planned mainnet version is intended to support a configurable delay from 3 to 30 days.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Is Slowlyy self-custodial?</h2>
+        <p>
+          Yes. Slowlyy is intended to remain a self-custody product. Users keep control of their own keys rather than handing custody to a centralized exchange or third party.
+        </p>
+        <p>
+          The difference is that Slowlyy adds a time layer to outgoing transactions, which changes the behavior of the wallet without giving up the self-custody model.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Who Slowlyy is for</h2>
+        <p>
+          Slowlyy is for people who believe self-custody matters, but who also recognize that fast irreversible transfers can be dangerous. It is especially relevant for users who want more time to think, review, and react when moving digital assets.
+        </p>
+      </section>
+    </main>
+
+    <div class="footer-links">
+      <a href="/faq">Read the FAQ</a>
+      <a href="/whitepaper">Read the white paper</a>
+      <a href="/privacypolicy">Read the privacy policy</a>
+    </div>
+  </div>
+</body>
+</html>
