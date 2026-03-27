@@ -635,8 +635,8 @@
 
     /* Form */
     .feedback-form {
-      background: linear-gradient(180deg, rgba(34, 31, 27, 0.98), rgba(29, 26, 23, 0.98));
-      border: 1px solid var(--border-subtle);
+      background: linear-gradient(180deg, #d8d2ca, #cfc8c0);
+      border: 1px solid rgba(43, 38, 34, 0.08);
       border-radius: 28px;
       padding: 48px;
       margin-top: 48px;
@@ -646,19 +646,24 @@
     .feedback-form h2 {
       font-size: 32px;
       margin-bottom: 24px;
+      color: #2b2622;
     }
 
     textarea, input[type="email"] {
       width: 100%;
-      background: rgba(21, 19, 17, 0.8);
-      border: 1px solid var(--border-subtle);
+      background: rgba(243, 238, 230, 0.7);
+      border: 1px solid rgba(43, 38, 34, 0.12);
       border-radius: 12px;
       padding: 16px;
-      color: var(--text-primary);
+      color: #2b2622;
       font-family: 'Manrope', sans-serif;
       font-size: 15px;
       margin-bottom: 16px;
       transition: border-color 0.2s;
+    }
+
+    textarea::placeholder, input[type="email"]::placeholder {
+      color: #6f6860;
     }
 
     textarea:focus, input[type="email"]:focus {
