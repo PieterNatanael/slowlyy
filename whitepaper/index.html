@@ -279,7 +279,7 @@
           This paper argues that the underlying architecture is broader than a wallet feature. Slowlyy can be understood as a <strong>transaction governance layer</strong> that separates payment initiation from final settlement. In a human context, that separation creates time to catch theft, coercion, and costly mistakes. In an AI-agent context, the same separation can serve as a governance boundary between autonomous intent and irreversible blockchain execution.
         </p>
         <p>
-          At initiation time, the system can verify sufficient balance and produce a signed pending receipt that signals a real scheduled payment state, even though final settlement remains delayed and revocable under defined conditions. This pending layer is the conceptual center of Slowlyy.
+          At initiation time, the system can verify sufficient balance and produce a signed pending receipt that signals a real scheduled payment state, even though final settlement remains delayed. The transfer stays vetoable during the waiting period and auto-settles when the delay completes if no veto occurs. This pending layer is the conceptual center of Slowlyy.
         </p>
       </section>
 
@@ -302,10 +302,10 @@
       <section>
         <h2>3. Thesis</h2>
         <p>
-          Slowlyy is a transaction governance layer that separates transaction initiation from final settlement, creating a pending review window before irreversible blockchain settlement.
+          Slowlyy is a transaction governance layer that separates transaction initiation from final settlement, creating a pending veto window before irreversible blockchain settlement.
         </p>
         <p>
-          This pending state is not merely a UI delay. It is a control boundary. During the window, a transfer can be reviewed, vetoed, or allowed to continue under defined release conditions. The result is a different payment model:
+          This pending state is not merely a UI delay. It is a control boundary. During the window, a transfer remains stoppable, and if no veto occurs it proceeds under defined release conditions. The result is a different payment model:
         </p>
         <ul>
           <li><strong>Intent</strong> can exist before settlement.</li>
@@ -328,7 +328,7 @@
           <li>The transaction enters a pending state instead of settling immediately.</li>
           <li>A delay period begins.</li>
           <li>The owner or governing policy layer retains veto or cancellation ability during that period.</li>
-          <li>Final settlement occurs only if release conditions remain satisfied until the end of the waiting window.</li>
+          <li>Final settlement occurs automatically when the waiting window completes, provided no veto has occurred and the release conditions remain satisfied.</li>
         </ol>
         <p>
           In the currently live testnet, this model is demonstrated with a 30 minute delay. In the intended mainnet design, the delay is planned to be configurable between 3 and 30 days.
@@ -341,7 +341,7 @@
           A key extension of the Slowlyy architecture is the idea of a signed pending receipt. When a payment is initiated and validated against current state, the system can produce a cryptographically signed record that the payment request exists, that the necessary balance was available at initiation time, and that the transfer has entered a governed pending window.
         </p>
         <p>
-          This receipt should not be confused with final settlement. It is better understood as a <strong>revocable pending commitment</strong> under defined rules.
+          This receipt should not be confused with final settlement. It is better understood as a <strong>pending payment commitment</strong> under defined rules: veto remains possible during the waiting period, and the payment is intended to auto-settle when the delay completes if no veto occurs.
         </p>
         <h3>What the receipt can signal</h3>
         <ul>
@@ -349,6 +349,7 @@
           <li>The system observed sufficient balance when the request was created.</li>
           <li>The request entered a pending settlement workflow.</li>
           <li>The payment is scheduled, but not yet final.</li>
+          <li>If no veto occurs, settlement is intended to complete automatically when the delay ends.</li>
         </ul>
         <h3>What the receipt does not guarantee</h3>
         <ul>

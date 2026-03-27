@@ -921,6 +921,37 @@
     </div>
   </section>
 
+  <section id="pending-receipt">
+    <div class="section-title">
+      <h2>A payment can be pending and still be real.</h2>
+      <p>
+        Slowlyy introduces a state between “not sent” and “fully settled.” A transfer can be initiated, verifiable, and scheduled before it becomes irreversible on-chain.
+      </p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-label is-live">Signed pending receipt</div>
+        <h3>Proof before finality</h3>
+        <ul>
+          <li><strong>The payment exists</strong> and has entered its waiting period.</li>
+          <li>The funds were available when the transfer was initiated.</li>
+          <li>The recipient gets structured confidence before final settlement.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-label is-build">Auto-settles unless vetoed</div>
+        <h3>Scheduled release logic</h3>
+        <ul>
+          <li>The transfer remains vetoable during the waiting window.</li>
+          <li>If no veto occurs, the payment is released automatically when the delay completes.</li>
+          <li>A signed pending receipt is not final settlement, but it is more than an informal promise.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
 
   <!-- Slowlyy X ACL Banner -->
 <section class="acl-banner">

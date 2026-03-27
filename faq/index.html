@@ -71,6 +71,14 @@
             "@type": "Answer",
             "text": "The current plan mentions support for Bitcoin, Ethereum, BNB, and Cardano, with additional chains to be considered later."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a signed pending receipt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A signed pending receipt is a record that a transfer was initiated, entered its waiting period, and was backed by sufficient funds at initiation time. It is not final settlement, but if no veto occurs during the waiting period, the payment is intended to auto-settle when the delay completes."
+          }
         }
       ]
     }
@@ -310,6 +318,13 @@
         <h2>Where can I read more about the security model?</h2>
         <p>
           The best place to start is the Slowlyy whitepaper, which explains the delayed-transfer idea, the time-verification model, and the current security assumptions in more detail.
+        </p>
+      </article>
+
+      <article class="faq-item">
+        <h2>What is a signed pending receipt?</h2>
+        <p>
+          A signed pending receipt is a record that a transfer was initiated, entered its waiting period, and was backed by sufficient funds at initiation time. It is not final settlement. The payment remains vetoable during the waiting period and is intended to auto-settle when the delay completes if no veto occurs.
         </p>
       </article>
     </main>
