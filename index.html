@@ -296,14 +296,30 @@
 
       <div class="receipt-card">
         <div class="receipt-card-top">
-          <div>
-            <div class="receipt-card-label">Signed Pending Receipt</div>
-            <div class="receipt-card-title">0.42 BTC Payment In Progress</div>
+          <div class="receipt-brand">
+            <div class="receipt-brand-mark">
+              <img src="logo.png" alt="Slowlyy logo" />
+            </div>
+            <div>
+              <div class="receipt-card-label">Issued by Slowlyy</div>
+              <div class="receipt-card-title">Slowlyy Pending Receipt</div>
+              <div class="receipt-card-subtitle">Payment initiated and awaiting final settlement</div>
+            </div>
           </div>
-          <span class="receipt-chip">Awaiting final settlement</span>
+          <span class="receipt-chip">Verified pending state</span>
+        </div>
+
+        <div class="receipt-meta">
+          <span class="receipt-meta-pill">Governed settlement</span>
+          <span class="receipt-meta-pill">Recipient assurance</span>
+          <span class="receipt-meta-pill">Auto-settles unless vetoed</span>
         </div>
 
         <div class="receipt-grid">
+          <div class="receipt-field">
+            <span class="receipt-field-label">Receipt ID</span>
+            <span class="receipt-field-value">SY-PENDING-20260330-7FD2C1</span>
+          </div>
           <div class="receipt-field">
             <span class="receipt-field-label">Initiated by</span>
             <span class="receipt-field-value">AI Agent / Wallet Owner</span>
@@ -334,6 +350,10 @@
           <p>Receipt signature / proof reference</p>
           <code class="receipt-code">receipt_sig_7fd2c1c8b4a1e92f_pending_settlement_proof</code>
         </div>
+
+        <p class="receipt-footer-note">
+          Issued by Slowlyy transaction governance layer. This receipt confirms that the payment was initiated, entered a pending settlement window, and is designed to settle automatically unless vetoed before release.
+        </p>
       </div>
     </div>
   </section>
