@@ -1,0 +1,322 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-dark: #151311;
+  --bg-surface: #221f1b;
+  --text-primary: #f3eee6;
+  --text-secondary: #b8ac9d;
+  --accent-sage: #7f8a82;
+  --border-subtle: rgba(243, 238, 230, 0.12);
+  --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+body {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(127, 138, 130, 0.16), transparent 30%),
+    var(--bg-dark);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+body.content-page {
+  line-height: 1.6;
+  padding: 0 24px 88px;
+}
+
+body.whitepaper-page {
+  line-height: 1.7;
+  padding: 0 24px 96px;
+}
+
+.shell {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 28px 0;
+  margin-bottom: 28px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.brand img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.back-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.back-link:hover {
+  color: var(--accent-sage);
+  border-color: var(--accent-sage);
+}
+
+.hero {
+  padding: 40px 0 36px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+body.faq-page .hero {
+  padding-bottom: 32px;
+}
+
+body.whitepaper-page .hero {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--accent-sage);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+body.faq-page h1 {
+  font-size: clamp(50px, 9vw, 82px);
+}
+
+body.content-page h1,
+body.whitepaper-page h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  line-height: 0.96;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  margin-bottom: 18px;
+}
+
+body.content-page h1 {
+  font-size: clamp(52px, 9vw, 86px);
+  max-width: 11ch;
+}
+
+body.faq-page h1 {
+  max-width: 11ch;
+}
+
+body.whitepaper-page h1 {
+  font-size: clamp(52px, 9vw, 86px);
+  max-width: 12ch;
+}
+
+.hero p {
+  color: var(--text-secondary);
+  font-size: 19px;
+}
+
+body.what-is-page .hero p {
+  max-width: 720px;
+}
+
+body.security-page .hero p,
+body.whitepaper-page .hero p {
+  max-width: 760px;
+}
+
+body.faq-page .hero p {
+  max-width: 700px;
+}
+
+.article,
+.faq-list,
+.paper {
+  display: grid;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+body.faq-page .faq-list {
+  margin-top: 28px;
+}
+
+.section,
+.faq-item,
+.paper section {
+  background: linear-gradient(180deg, rgba(34, 31, 27, 0.98), rgba(29, 26, 23, 0.98));
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.section,
+.paper section {
+  padding: 30px;
+}
+
+.faq-item {
+  padding: 28px;
+}
+
+.section h2,
+.faq-item h2,
+.paper h2,
+.paper h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600;
+}
+
+.section h2 {
+  font-size: 38px;
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+
+.faq-item h2 {
+  font-size: 36px;
+  line-height: 1.05;
+  margin-bottom: 12px;
+}
+
+.paper h2 {
+  font-size: 40px;
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+
+.paper h3 {
+  font-size: 30px;
+  line-height: 1.1;
+  margin: 22px 0 10px;
+}
+
+.section p,
+.faq-item p,
+.paper p {
+  color: var(--text-secondary);
+  font-size: 17px;
+}
+
+.section p,
+.paper p {
+  margin-bottom: 14px;
+}
+
+.section p:last-child,
+.paper p:last-child {
+  margin-bottom: 0;
+}
+
+.section ul {
+  list-style: none;
+  margin-top: 18px;
+}
+
+.section li {
+  position: relative;
+  padding-left: 28px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  font-size: 17px;
+}
+
+.section li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent-sage);
+}
+
+.paper ul,
+.paper ol {
+  margin-top: 16px;
+  padding-left: 22px;
+  color: var(--text-secondary);
+}
+
+.paper li {
+  margin-bottom: 10px;
+  font-size: 17px;
+}
+
+.callout {
+  border-left: 3px solid var(--accent-sage);
+  padding-left: 16px;
+  color: var(--text-primary);
+  margin-top: 14px;
+}
+
+.paper strong {
+  color: var(--text-primary);
+}
+
+.paper code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: rgba(243, 238, 230, 0.06);
+  padding: 0.1rem 0.35rem;
+  border-radius: 6px;
+  color: var(--text-primary);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 36px;
+}
+
+.footer-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(243, 238, 230, 0.16);
+  padding-bottom: 2px;
+}
+
+.footer-links a:hover {
+  color: var(--accent-sage);
+  border-color: var(--accent-sage);
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section,
+  .paper section,
+  .faq-item {
+    padding: 24px;
+  }
+
+  .section h2 {
+    font-size: 32px;
+  }
+
+  .faq-item h2 {
+    font-size: 30px;
+  }
+
+  .paper h2 {
+    font-size: 34px;
+  }
+
+  .paper h3 {
+    font-size: 27px;
+  }
+}

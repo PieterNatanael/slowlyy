@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Slowlyy FAQ | Delayed-Transfer Self-Custody Wallet</title>
-  <meta name="description" content="Frequently asked questions about Slowlyy, a self-custody crypto wallet with delayed outgoing transfers." />
+  <title>Slowlyy Crypto Wallet FAQ | Delayed-Transfer Self-Custody Wallet</title>
+  <meta name="description" content="Frequently asked questions about Slowlyy Crypto Wallet, a self-custody crypto wallet with delayed outgoing transfers." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://slowlyy.com/faq" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Slowlyy FAQ" />
-  <meta property="og:description" content="Answers to common questions about Slowlyy, delayed outgoing transfers, testnet availability, and mainnet plans." />
+  <meta property="og:title" content="Slowlyy Crypto Wallet FAQ" />
+  <meta property="og:description" content="Answers to common questions about Slowlyy Crypto Wallet, delayed outgoing transfers, testnet availability, and mainnet plans." />
   <meta property="og:url" content="https://slowlyy.com/faq" />
   <meta property="og:image" content="https://slowlyy.com/logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Slowlyy FAQ" />
-  <meta name="twitter:description" content="Answers to common questions about Slowlyy, delayed outgoing transfers, testnet availability, and mainnet plans." />
+  <meta name="twitter:title" content="Slowlyy Crypto Wallet FAQ" />
+  <meta name="twitter:description" content="Answers to common questions about Slowlyy Crypto Wallet, delayed outgoing transfers, testnet availability, and mainnet plans." />
   <meta name="twitter:image" content="https://slowlyy.com/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles/content-pages.css" />
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -83,170 +84,8 @@
       ]
     }
   </script>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg-dark: #151311;
-      --bg-surface: #221f1b;
-      --text-primary: #f3eee6;
-      --text-secondary: #b8ac9d;
-      --accent-sage: #7f8a82;
-      --border-subtle: rgba(243, 238, 230, 0.12);
-      --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.28);
-    }
-
-    body {
-      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(127, 138, 130, 0.16), transparent 30%),
-        var(--bg-dark);
-      color: var(--text-primary);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      padding: 0 24px 80px;
-    }
-
-    .shell {
-      max-width: 980px;
-      margin: 0 auto;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      padding: 28px 0;
-      margin-bottom: 28px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--text-primary);
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-
-    .brand img {
-      width: 34px;
-      height: 34px;
-      object-fit: contain;
-    }
-
-    .back-link {
-      color: var(--text-secondary);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-    }
-
-    .back-link:hover {
-      color: var(--accent-sage);
-      border-color: var(--accent-sage);
-    }
-
-    .hero {
-      padding: 40px 0 32px;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .eyebrow {
-      display: inline-block;
-      color: var(--accent-sage);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(50px, 9vw, 82px);
-      line-height: 0.96;
-      font-weight: 600;
-      letter-spacing: -0.04em;
-      max-width: 11ch;
-      margin-bottom: 18px;
-    }
-
-    .hero p {
-      color: var(--text-secondary);
-      max-width: 700px;
-      font-size: 19px;
-    }
-
-    .faq-list {
-      display: grid;
-      gap: 18px;
-      margin-top: 28px;
-    }
-
-    .faq-item {
-      background: linear-gradient(180deg, rgba(34, 31, 27, 0.98), rgba(29, 26, 23, 0.98));
-      border: 1px solid var(--border-subtle);
-      border-radius: 24px;
-      padding: 28px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .faq-item h2 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 36px;
-      line-height: 1.05;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .faq-item p {
-      color: var(--text-secondary);
-      font-size: 17px;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      margin-top: 36px;
-    }
-
-    .footer-links a {
-      color: var(--text-primary);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(243, 238, 230, 0.16);
-      padding-bottom: 2px;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent-sage);
-      border-color: var(--accent-sage);
-    }
-
-    @media (max-width: 720px) {
-      .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .faq-item {
-        padding: 24px;
-      }
-
-      .faq-item h2 {
-        font-size: 30px;
-      }
-    }
-  </style>
 </head>
-<body>
+<body class="content-page faq-page">
   <div class="shell">
     <div class="topbar">
       <a href="/" class="brand">

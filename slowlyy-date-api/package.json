@@ -1,13 +1,18 @@
 {
   "name": "slowlyy-date-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Signed date response service for Slowlyy.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "slowlyy",
+    "express",
+    "crypto",
+    "hmac"
+  ],
+  "author": "Slowlyy",
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0"
