@@ -56,7 +56,7 @@
       <span class="eyebrow">Whitepaper</span>
       <h1>Transaction governance before final settlement.</h1>
       <p>
-        Slowlyy is built around a simple but consequential idea: blockchain payment initiation and blockchain finality should not always be the same moment. This paper describes Slowlyy as a transaction governance layer that creates a pending review window before irreversible settlement for both human users and, in the future, AI agents.
+        Slowlyy is built around a simple but consequential idea: blockchain payment initiation and blockchain finality should not always be the same moment. This paper describes Slowlyy as a transaction governance layer that creates a pending veto window before irreversible settlement for both human users and, in the future, AI agents.
       </p>
     </header>
 
@@ -80,7 +80,7 @@
           Blockchain settlement is powerful because it is difficult to reverse. That same property makes it unforgiving. In most wallet designs, a transfer request and a finalized outgoing payment are tightly coupled. Once the relevant signing conditions are met, funds can leave almost immediately.
         </p>
         <p>
-          This coupling creates a structural problem. The moment of compromise and the moment of loss can be nearly identical. If a phone is stolen, malware gains control, a user is socially engineered, or the wrong destination address is approved, there may be little or no time to intervene.
+          This coupling creates a structural problem. The moment of compromise and the moment of loss can be nearly identical. If a phone is stolen, malware gains control, a user is socially engineered, or the wrong destination address is selected, there may be little or no time to intervene.
         </p>
         <p>
           The problem becomes sharper in an AI-agent world. Agents can execute instructions quickly and repeatedly. They can initiate payments based on prompts, policies, or tool chains, but blockchain settlement remains irreversible even when the initiating logic is wrong, ambiguous, manipulated, or poorly supervised.
@@ -169,7 +169,7 @@
         </p>
         <ul>
           <li>Agents can initiate requests.</li>
-          <li>Humans or policies can review or veto during the pending window.</li>
+          <li>Humans or policies can inspect or veto during the pending window.</li>
           <li>Recipients can receive structured evidence that payment is scheduled.</li>
           <li>Irreversible settlement happens only after the governance window closes.</li>
         </ul>
@@ -212,7 +212,7 @@
         <h3>Planned progression</h3>
         <ul>
           <li>Configurable 3 to 30 day delay windows in mainnet.</li>
-          <li>More explicit cancellation and review flows.</li>
+          <li>More explicit veto and intervention flows.</li>
           <li>Stronger hardening of the release and verification model.</li>
           <li>Potential recipient-visible signed pending receipts.</li>
           <li>Potential policy and agent-facing transaction governance features.</li>
