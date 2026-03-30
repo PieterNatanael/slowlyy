@@ -284,84 +284,50 @@
     </div>
 
     <div class="receipt-demo">
-    <div class="receipt-demo-header">
-      <div>
-        <h3>Recipient Assurance Before Final Settlement</h3>
-        <p>
-            A recipient can see that the payment is real, currently pending, and designed to settle automatically unless vetoed during the delay window.
-        </p>
-      </div>
-      <span class="receipt-status">Recipient assurance</span>
+      <div class="receipt-demo-header">
+        <div>
+          <h3>Pending Payment Receipt</h3>
+          <p>
+            A simple proof that the transfer is real, currently pending, and not yet final on-chain.
+          </p>
+        </div>
       </div>
 
       <div class="receipt-card-shell">
         <div class="receipt-card">
           <div class="receipt-card-top">
-          <div class="receipt-letterhead">
+            <div class="receipt-letterhead">
               <div class="receipt-card-title">Slowlyy Pending Receipt</div>
-              <div class="receipt-card-copy">Recipient Copy</div>
-              <div class="receipt-card-subtitle">Payment initiated, pending final settlement</div>
-            </div>
-            <div class="receipt-reference">
-              <div class="receipt-reference-row">
-                <span class="receipt-reference-label">Status</span>
-                <span class="receipt-reference-value">Pending and verified</span>
-              </div>
-              <div class="receipt-reference-row">
-                <span class="receipt-reference-label">Receipt No.</span>
-                <span class="receipt-reference-value">SY-PENDING-20260330-7FD2C1</span>
-              </div>
-              <div class="receipt-reference-row">
-                <span class="receipt-reference-label">Issued</span>
-                <span class="receipt-reference-value">2026-03-30 14:05 UTC</span>
-              </div>
+              <div class="receipt-card-subtitle">Recipient copy</div>
             </div>
           </div>
 
           <div class="receipt-card-body">
-            <div class="receipt-meta">
-              <span class="receipt-meta-pill">Pending payment</span>
-              <span class="receipt-meta-pill">Auto-settles unless vetoed</span>
+            <div class="receipt-amount">0.42 BTC pending</div>
+            <div class="receipt-recipient">Recipient: bc1q...9x4m</div>
+
+            <div class="receipt-status-row">
+              <span class="receipt-status-pill is-verified">Pending and verified</span>
+              <span class="receipt-status-pill is-rule">Auto-settles unless vetoed</span>
             </div>
 
-            <div class="receipt-summary">
-              <strong>Receipt summary:</strong> Payment initiated. Pending final settlement. The recipient has proof that the transfer is in progress before funds move on-chain.
-            </div>
-
-            <div class="receipt-mini-grid">
-              <div class="receipt-mini-item">
-                <span class="receipt-mini-label">Amount</span>
-                <span class="receipt-mini-value">0.42 BTC pending</span>
+            <div class="receipt-info-row">
+              <div class="receipt-info-item">
+                <span class="receipt-info-label">Issued</span>
+                <span class="receipt-info-value">2026-03-30 14:05 UTC</span>
               </div>
-              <div class="receipt-mini-item">
-                <span class="receipt-mini-label">Current state</span>
-                <span class="receipt-mini-value">Awaiting final settlement</span>
+              <div class="receipt-info-item">
+                <span class="receipt-info-label">Ref</span>
+                <span class="receipt-info-value">SY-PENDING-20260330-7FD2C1</span>
               </div>
-              <div class="receipt-mini-item">
-                <span class="receipt-mini-label">Funds check</span>
-                <span class="receipt-mini-value">Sufficient at initiation</span>
-              </div>
-              <div class="receipt-mini-item">
-                <span class="receipt-mini-label">Settlement rule</span>
-                <span class="receipt-mini-value">Auto-settles unless vetoed</span>
-              </div>
-            </div>
-
-            <div class="receipt-proof">
-              <div class="receipt-proof-header">
-                <p>Receipt proof reference</p>
-                <span class="receipt-stamp">Issued by Slowlyy</span>
-              </div>
-              <code class="receipt-code">receipt_sig_7fd2c1c8b4a1e92f_pending_settlement_proof</code>
             </div>
 
             <p class="receipt-footer-note">
-              Issued by Slowlyy. This is a pending payment assurance document, not a final on-chain settlement receipt.
+              Not final on-chain settlement.
             </p>
           </div>
         </div>
       </div>
-      <p class="receipt-showcase-caption">Recipient-side assurance before final settlement.</p>
     </div>
   </section>
 
