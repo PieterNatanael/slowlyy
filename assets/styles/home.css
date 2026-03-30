@@ -610,10 +610,12 @@ button[type="button"]:hover {
 
 .receipt-demo {
   margin-top: 24px;
-  background: linear-gradient(180deg, rgba(34, 31, 27, 0.98), rgba(29, 26, 23, 0.98));
+  background:
+    radial-gradient(circle at top left, rgba(127, 138, 130, 0.12), transparent 35%),
+    linear-gradient(180deg, rgba(34, 31, 27, 0.98), rgba(29, 26, 23, 0.98));
   border: 1px solid var(--border-subtle);
-  border-radius: 28px;
-  padding: 28px;
+  border-radius: 30px;
+  padding: 30px;
   box-shadow: var(--shadow-soft);
 }
 
@@ -663,6 +665,11 @@ button[type="button"]:hover {
   padding: 0;
   position: relative;
   overflow: hidden;
+  max-width: 860px;
+  margin: 0 auto;
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.34),
+    0 8px 24px rgba(43, 38, 34, 0.14);
 }
 
 .receipt-card:before {
@@ -685,6 +692,14 @@ button[type="button"]:hover {
   right: 0;
   height: 5px;
   background: linear-gradient(90deg, var(--accent-sage), #9ba79f);
+}
+
+.receipt-card-shell {
+  position: relative;
+  padding: 18px;
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(243, 238, 230, 0.03), rgba(243, 238, 230, 0.01));
+  border: 1px solid rgba(243, 238, 230, 0.06);
 }
 
 .receipt-card-body {
@@ -922,6 +937,15 @@ button[type="button"]:hover {
   z-index: 1;
 }
 
+.receipt-showcase-caption {
+  max-width: 860px;
+  margin: 14px auto 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
 footer {
   text-align: center;
   padding: 64px 24px;
@@ -967,6 +991,14 @@ footer {
   .receipt-demo,
   .receipt-card {
     padding: 24px;
+  }
+
+  .receipt-demo {
+    padding: 22px;
+  }
+
+  .receipt-card-shell {
+    padding: 12px;
   }
 
   .receipt-demo-header,
